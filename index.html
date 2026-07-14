@@ -3,513 +3,1591 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>DRIFT MAX — Premium Curated Global Infrastructure</title>
   
-  <title>Drift Max — Premium Curated Global Finds</title>
-  <meta name="description" content="Shop the internet's most viral products. Hand-picked, premium-quality gadgets, lifestyle accessories, and beauty innovations shipped directly.">
-  <meta name="robots" content="index, follow">
-
+  <!-- Semantic Engine Optimization Tags -->
+  <meta name="description" content="Immersive enterprise curated sourcing network delivering direct manufacturing pricing loops on highly viral lifestyle innovations.">
+  <meta name="keywords" content="viral gadgets, direct consumer supply, high-end tech, premium curated dropshipping infrastructure">
+  
+  <!-- Google Corporate Typography Engine -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* ==========================================================================
+       ENTERPRISE DESIGN SYSTEM VARIABLES & CORE ARCHITECTURE
+       ========================================================================== */
     :root {
-      --bg: #030206;
-      --surface: rgba(255, 255, 255, 0.03);
-      --surface-solid: #0b0a13;
-      --line: rgba(255, 255, 255, 0.07);
-      --text: #f3f1f9;
-      --muted: #8e879a;
-      --violet: #7c62ff;
-      --coral: #ff533b;
-      --teal: #1cd5b5;
-      --gold: #ffb12b;
-      --glow: 0 0 30px rgba(124, 98, 255, 0.2);
+      --canvas: #030207;
+      --surface-glass: rgba(13, 11, 22, 0.65);
+      --surface-solid: #0d0b16;
+      --surface-card: rgba(255, 255, 255, 0.02);
+      --border-glow: rgba(124, 98, 255, 0.15);
+      --border-line: rgba(255, 255, 255, 0.07);
+      
+      --text-main: #f3f1f8;
+      --text-muted: #8d8799;
+      
+      /* Pure Brand Spectrums */
+      --brand-primary: #7c62ff;
+      --brand-secondary: #ff533b;
+      --brand-accent: #1cd5b5;
+      --brand-gold: #ffb12b;
+      
+      /* Global Animation Constants */
+      --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-standard: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    /* System Normalization */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
-      font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text);
-      min-height: 100vh; overflow-x: hidden; position: relative;
-    }
-    .display { font-family: 'Space Grotesk', sans-serif; }
-
-    /* Aurora Glows */
-    .glow-bg {
-      position: fixed; inset: -20%; z-index: 0; pointer-events: none; filter: blur(130px); opacity: 0.5;
-    }
-    .glow-bg span { position: absolute; border-radius: 50%; }
-    .glow-bg span:nth-child(1) { width: 60vw; height: 60vw; background: var(--violet); top: -10%; left: -10%; }
-    .glow-bg span:nth-child(2) { width: 50vw; height: 50vw; background: var(--coral); bottom: -10%; right: -10%; }
-
-    /* Flash Sale Counter Bar */
-    .ticker-bar {
-      background: linear-gradient(90deg, #ff381e, var(--coral));
-      color: white; padding: 10px; font-size: 0.82rem; font-weight: 700;
-      text-align: center; position: sticky; top: 0; z-index: 110;
-      display: flex; justify-content: center; align-items: center; gap: 10px;
-      letter-spacing: 0.03em; box-shadow: 0 4px 15px rgba(255, 83, 59, 0.25);
-    }
-    .timer-unit { background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px; margin: 0 2px; }
-
-    /* Header Styling */
-    header {
-      position: sticky; top: 38px; z-index: 100;
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      background: rgba(3, 2, 6, 0.75); border-bottom: 1px solid var(--line);
-      padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo-block { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-    .logo-dot { width: 10px; height: 10px; background: var(--teal); border-radius: 50%; box-shadow: 0 0 15px var(--teal); }
-    .brand-name { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.04em; }
-    
-    .nav-actions { display: flex; gap: 10px; }
-    .nav-btn {
-      background: var(--surface); border: 1px solid var(--line); color: var(--text);
-      border-radius: 12px; padding: 10px 16px; font-size: 0.85rem; font-weight: 600;
-      cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s;
-    }
-    .nav-btn:hover { border-color: var(--violet); background: rgba(255,255,255,0.06); }
-    .counter-badge { background: var(--violet); color: white; padding: 1px 6px; border-radius: 6px; font-size: 0.72rem; }
-
-    main { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; padding-bottom: 120px; }
-
-    /* Hero */
-    .hero { text-align: center; padding: 50px 24px 20px; }
-    .hero h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: -0.05em; line-height: 1.1; }
-    .hero h1 span { background: linear-gradient(135deg, #fff, var(--violet), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { color: var(--muted); margin-top: 15px; font-size: 1.05rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
-
-    /* Search & Filter Controls */
-    .search-row { max-width: 650px; margin: 25px auto; padding: 0 24px; display: flex; gap: 10px; }
-    .search-input-wrap {
-      flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
-      display: flex; align-items: center; padding: 0 14px;
-    }
-    .search-input-wrap input {
-      flex: 1; background: none; border: none; outline: none; color: var(--text); padding: 12px 6px; font-family: inherit;
-    }
-    .search-btn { background: var(--teal); border: none; color: #000; font-weight: 700; padding: 0 20px; border-radius: 14px; cursor: pointer; }
-
-    /* Categories Horizontal Scroller */
-    .cat-scroller { display: flex; gap: 10px; overflow-x: auto; padding: 10px 24px; scrollbar-width: none; }
-    .cat-scroller::-webkit-scrollbar { display: none; }
-    .cat-chip { background: var(--surface); border: 1px solid var(--line); padding: 10px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.2s; color: var(--muted); }
-    .cat-chip.active { background: #fff; color: #000; border-color: #fff; font-weight: 700; }
-
-    /* Ultimate 3D Grid Configuration */
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; padding: 24px; }
-    
-    .card-3d {
-      background: rgba(255, 255, 255, 0.02); border: 1px solid var(--line); border-radius: 24px;
-      overflow: hidden; display: flex; flex-direction: column; position: relative;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: blur(10px); cursor: pointer;
-    }
-    .card-3d:hover {
-      transform: translateY(-6px) scale(1.01); border-color: rgba(124, 98, 255, 0.4);
-      box-shadow: 0 12px 30px rgba(124, 98, 255, 0.15);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--canvas);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .card-img-container { position: relative; aspect-ratio: 1; overflow: hidden; background: #0c0a14; }
-    .card-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .card-3d:hover .card-img-container img { transform: scale(1.06); }
-    
-    /* Ultimate Badges */
-    .badge-discount { position: absolute; top: 12px; left: 12px; background: var(--coral); color: white; padding: 4px 8px; font-size: 0.72rem; font-weight: 700; border-radius: 6px; z-index: 5; }
-    .badge-trending { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); border: 1px solid var(--line); color: var(--gold); padding: 4px 8px; font-size: 0.72rem; font-weight: 600; border-radius: 6px; z-index: 5; }
-
-    .card-meta { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-    .rating-stars { display: flex; align-items: center; gap: 2px; color: var(--gold); font-size: 0.75rem; }
-    .rating-count { color: var(--muted); font-size: 0.72rem; margin-left: 4px; }
-    
-    .card-title { font-size: 0.92rem; font-weight: 600; line-height: 1.4; height: 2.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; color: #f3f1f9; }
-    
-    .card-pricing { display: flex; align-items: baseline; gap: 8px; margin-top: auto; }
-    .current-price { font-size: 1.35rem; font-weight: 700; color: var(--teal); }
-    .slashed-price { font-size: 0.88rem; color: var(--muted); text-decoration: line-through; }
-
-    .card-buttons { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
-    .btn { border: none; padding: 12px; font-size: 0.82rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
-    .btn-primary { background: linear-gradient(135deg, var(--violet), #6347ff); color: white; }
-    .btn-primary:hover { filter: brightness(1.1); box-shadow: var(--glow); }
-    .btn-secondary { background: var(--surface-solid); border: 1px solid var(--line); color: var(--text); }
-    .btn-secondary:hover { background: rgba(255,255,255,0.08); }
-
-    /* ---------- Mega Product Detail Modal ---------- */
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(3, 2, 6, 0.85); backdrop-filter: blur(15px); z-index: 200; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 16px; }
-    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
-    .modal-wrapper { background: var(--surface-solid); width: 100%; max-width: 850px; max-height: 90vh; border-radius: 28px; border: 1px solid var(--line); overflow-y: auto; display: grid; grid-template-columns: 1fr; position: relative; }
-    @media (min-width: 680px) { .modal-wrapper { grid-template-columns: 1fr 1.1fr; } }
-    
-    .modal-close-trigger { position: absolute; top: 16px; right: 16px; z-index: 10; background: rgba(0,0,0,0.4); border: 1px solid var(--line); color: white; width: 34px; height: 34px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; }
-    .modal-left { padding: 24px; background: rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 12px; }
-    .modal-main-img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; border: 1px solid var(--line); }
-    .modal-right { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
-    
-    /* Urgency Inventory Meter */
-    .urgency-meter { background: rgba(255, 83, 59, 0.05); border: 1px solid rgba(255, 83, 59, 0.15); border-radius: 12px; padding: 12px; font-size: 0.8rem; }
-    .meter-track { width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; margin-top: 8px; overflow: hidden; }
-    .meter-fill { height: 100%; width: 25%; background: var(--coral); animation: pulseWidth 2s infinite; }
-
-    /* ---------- Cart Drawer Panel ---------- */
-    .drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 150; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-    .drawer-backdrop.active { opacity: 1; pointer-events: auto; }
-    .drawer-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 90%; max-width: 440px; background: var(--surface-solid); border-left: 1px solid var(--line); display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.1, 0.9, 0.2, 1); }
-    .drawer-backdrop.active .drawer-panel { transform: translateX(0); }
-    .drawer-header { padding: 20px 24px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
-    .drawer-items { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
-    .drawer-item { display: flex; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 16px; }
-    .drawer-item img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
-    .drawer-footer { padding: 24px; border-top: 1px solid var(--line); }
-
-    /* ---------- Live Social Proof Feed Popup ---------- */
-    .live-popup {
-      position: fixed; bottom: 24px; left: 24px; z-index: 500;
-      background: rgba(11, 10, 19, 0.9); border: 1px solid var(--line); padding: 12px 16px;
-      border-radius: 16px; display: flex; align-items: center; gap: 12px; max-width: 320px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6); backdrop-filter: blur(10px);
-      transform: translateY(150px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .display-font {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.03em;
     }
-    .live-popup.visible { transform: translateY(0); }
-    .live-popup img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; }
-    .live-popup-text { font-size: 0.78rem; line-height: 1.4; color: var(--muted); }
-    .live-popup-text strong { color: var(--text); }
 
-    /* Global Utils */
-    .toast-alert { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(50px); background: #fff; color: #000; padding: 12px 24px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; opacity: 0; z-index: 600; transition: all 0.3s ease; }
-    .toast-alert.reveal { opacity: 1; transform: translateX(-50%) translateY(0); }
-    .spinner { width: 30px; height: 30px; border: 3px solid var(--line); border-top-color: var(--teal); border-radius: 50%; animation: rot 0.8s linear infinite; margin: 40px auto; }
-    @keyframes rot { to { transform: rotate(360deg); } }
+    /* Custom Ambient Scroll Track Integration */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--canvas);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-line);
+      border-radius: 99px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--brand-primary);
+    }
+
+    /* ==========================================================================
+       AURORA GENERATIVE INTERACTIVE BACKGROUND LAYERS
+       ========================================================================== */
+    .aurora-container {
+      position: fixed;
+      inset: -10%;
+      width: 120vw;
+      height: 120vh;
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(140px);
+      opacity: 0.45;
+      overflow: hidden;
+    }
+
+    .aurora-sphere {
+      position: absolute;
+      border-radius: 50%;
+      mix-blend-mode: screen;
+    }
+    .aurora-1 {
+      width: 55vw;
+      height: 55vw;
+      background: var(--brand-primary);
+      top: -5%;
+      left: -10%;
+      animation: auroraOrbitOne 25s infinite linear;
+    }
+    .aurora-2 {
+      width: 45vw;
+      height: 45vw;
+      background: var(--brand-secondary);
+      bottom: -5%;
+      right: -5%;
+      animation: auroraOrbitTwo 30s infinite linear;
+    }
+
+    @keyframes auroraOrbitOne {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(5%, 8%) rotate(180deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+    @keyframes auroraOrbitTwo {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-8%, -5%) rotate(-180deg); }
+      100% { transform: translate(0, 0) rotate(-360deg); }
+    }
+
+    /* ==========================================================================
+       CONVERSION URGENCY TICKER ELEMENT
+       ========================================================================== */
+    .urgency-ticker {
+      background: linear-gradient(90deg, #e0311a, var(--brand-secondary));
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(255, 83, 59, 0.2);
+    }
+
+    .countdown-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .countdown-block {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ==========================================================================
+       NAVIGATION CORE MECHANICS
+       ========================================================================== */
+    .main-nav {
+      position: sticky;
+      top: 36px;
+      z-index: 900;
+      background: var(--surface-glass);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border-line);
+      padding: 16px 4%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-identity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-core-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--brand-accent);
+      border-radius: 50%;
+      position: relative;
+    }
+    .brand-core-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 1px solid var(--brand-accent);
+      border-radius: 50%;
+      animation: pulseRadar 2s infinite linear;
+    }
+
+    @keyframes pulseRadar {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    .brand-title-text {
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #fff, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-interaction-cluster {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bag-trigger-button {
+      background: var(--surface-card);
+      border: 1px solid var(--border-line);
+      color: var(--text-main);
+      padding: 10px 18px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-standard);
+    }
+    .bag-trigger-button:hover {
+      border-color: var(--brand-primary);
+      background: rgba(124, 98, 255, 0.05);
+      transform: translateY(-1px);
+    }
+
+    .bag-quantity-badge {
+      background: var(--brand-primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+
+    /* ==========================================================================
+       HERO SYSTEM & FILTER PIPELINES
+       ========================================================================== */
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 4% 20px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero-h1 span {
+      background: linear-gradient(135deg, #fff 20%, var(--brand-primary), var(--brand-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-p {
+      color: var(--text-muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      max-width: 55ch;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    /* Sourcing Filtration Input Console */
+    .filter-console-row {
+      max-width: 680px;
+      margin: 0 auto 30px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .input-glass-wrapper {
+      flex: 1;
+      background: var(--surface-card);
+      border: 1px solid var(--border-line);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      transition: var(--transition-standard);
+    }
+    .input-glass-wrapper:focus-within {
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 25px rgba(124, 98, 255, 0.15);
+    }
+
+    .input-glass-wrapper input {
+      width: 100%;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text-main);
+      padding: 14px 0;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+    .input-glass-wrapper input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .console-action-button {
+      background: var(--brand-accent);
+      color: #030207;
+      font-weight: 700;
+      border: none;
+      padding: 0 26px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: var(--transition-standard);
+    }
+    .console-action-button:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    /* Category Navigation Track */
+    .category-track {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 10px 0;
+      scrollbar-width: none;
+      justify-content: flex-start;
+    }
+    @media (min-width: 768px) {
+      .category-track { justify-content: center; }
+    }
+    .category-track::-webkit-scrollbar { display: none; }
+
+    .category-pill {
+      background: var(--surface-card);
+      border: 1px solid var(--border-line);
+      color: var(--text-muted);
+      padding: 10px 22px;
+      border-radius: 99px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition-standard);
+    }
+    .category-pill:hover {
+      color: var(--text-main);
+      border-color: var(--text-muted);
+    }
+    .category-pill.is-active {
+      background: #fff;
+      color: #030207;
+      border-color: #fff;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       DYNAMIC STRUCTURAL MATRIX GRID
+       ========================================================================== */
+    .showcase-matrix-wrapper {
+      max-width: 1300px;
+      margin: 40px auto 0;
+      padding: 0 4% 120px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .product-structural-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    /* Professional High-End Interactive Card Engine */
+    .matrix-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-line);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.4s var(--ease-fluid), border-color 0.4s var(--ease-fluid), box-shadow 0.4s var(--ease-fluid);
+      cursor: pointer;
+    }
+    .matrix-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(124, 98, 255, 0.35);
+      box-shadow: 0 20px 40px rgba(124, 98, 255, 0.12);
+    }
+
+    .card-media-vault {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #09080e;
+    }
+    .card-media-vault img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-fluid);
+    }
+    .matrix-card:hover .card-media-vault img {
+      transform: scale(1.05);
+    }
+
+    /* High-Conversion Visual Labels */
+    .label-discount {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--brand-secondary);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      z-index: 5;
+    }
+    .label-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(3, 2, 7, 0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border-line);
+      color: var(--brand-gold);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      z-index: 5;
+    }
+
+    .card-metadata-hull {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .rating-stellar-cluster {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      color: var(--brand-gold);
+      font-size: 0.8rem;
+    }
+    .rating-stellar-volume {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-left: 6px;
+    }
+
+    .card-functional-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-main);
+      height: 2.8em;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .card-monetary-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .price-active {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--brand-accent);
+    }
+    .price-slashed {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-action-hull {
+      margin-top: 14px;
+    }
+
+    /* Core Architectural Buttons */
+    .base-button {
+      width: 100%;
+      border: none;
+      padding: 14px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition-standard);
+    }
+    .button-primary {
+      background: linear-gradient(135deg, var(--brand-primary), #6146f2);
+      color: #fff;
+    }
+    .button-primary:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 0 25px rgba(124, 98, 255, 0.3);
+    }
+
+    /* Skeleton Loading State Shimmer UI */
+    .skeleton-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-line);
+      border-radius: 24px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .skeleton-media {
+      width: 100%;
+      aspect-ratio: 1;
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .skeleton-line {
+      height: 14px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .skeleton-media::after, .skeleton-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+      animation: shimmerLoop 1.5s infinite;
+    }
+    @keyframes shimmerLoop {
+      100% { transform: translateX(100%); }
+    }
+
+    /* Fallback State Engine Layout */
+    .fallback-state-container {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(255,255,255,0.01);
+      border: 1px dashed var(--border-line);
+      border-radius: 24px;
+    }
+    .fallback-header {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .fallback-subheader {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .fallback-action-btn {
+      max-width: 220px;
+      margin: 0 auto;
+    }
+    /* ==========================================================================
+       SPECIFICATION DIALOG CONSOLE (MODAL INTERFACE)
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 2, 7, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease-fluid);
+      padding: 20px;
+    }
+    .modal-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-viewport-container {
+      background: var(--surface-solid);
+      border: 1px solid var(--border-line);
+      width: 100%;
+      max-width: 900px;
+      max-height: 85vh;
+      border-radius: 28px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.4s var(--ease-fluid);
+    }
+    .modal-overlay.is-open .modal-viewport-container {
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .modal-viewport-container { grid-template-columns: 1fr 1.1fr; }
+    }
+
+    .modal-dismiss-trigger {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-line);
+      color: var(--text-main);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-gallery-pane {
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-primary-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--border-line);
+    }
+
+    .modal-data-pane {
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .scarcity-index-meter {
+      background: rgba(255, 83, 59, 0.04);
+      border: 1px solid rgba(255, 83, 59, 0.15);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .scarcity-text-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: var(--brand-secondary);
+      margin-bottom: 8px;
+    }
+    .scarcity-track-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .scarcity-fill-bar {
+      height: 100%;
+      width: 35%;
+      background: var(--brand-secondary);
+      border-radius: 3px;
+    }
+
+    .modal-scrollable-details {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-height: 180px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    /* ==========================================================================
+       SHOPPING BAG SYSTEM DRAWER MODULE
+       ========================================================================== */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 2, 7, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .drawer-overlay.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-core-panel {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 460px;
+      background: var(--surface-solid);
+      border-left: 1px solid var(--border-line);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s var(--ease-fluid);
+    }
+    .drawer-overlay.is-active .drawer-core-panel {
+      transform: translateX(0);
+    }
+
+    .drawer-header-hub {
+      padding: 24px;
+      border-bottom: 1px solid var(--border-line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-dismiss-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    .drawer-scrollable-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .bag-item-row {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: 20px;
+    }
+    .bag-item-row img {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--border-line);
+    }
+
+    .bag-item-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bag-item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 280px;
+    }
+
+    .bag-item-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .quantity-stepper {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .stepper-btn {
+      background: none;
+      border: none;
+      color: var(--text-main);
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .stepper-value {
+      font-size: 0.85rem;
+      padding: 0 8px;
+      font-weight: 600;
+    }
+
+    .drawer-footer-hub {
+      padding: 24px;
+      border-top: 1px solid var(--border-line);
+      background: rgba(0,0,0,0.1);
+    }
+
+    .shipping-threshold-meter {
+      margin-bottom: 16px;
+      font-size: 0.8rem;
+    }
+
+    /* ==========================================================================
+       SOCIAL PROOF LIVE NOTIFICATION ENGINE
+       ========================================================================== */
+    .proof-popup-capsule {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 5000;
+      background: rgba(13, 11, 22, 0.95);
+      border: 1px solid var(--border-line);
+      padding: 14px 18px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 350px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transform: translateY(180px);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+    .proof-popup-capsule.is-visible {
+      transform: translateY(0);
+    }
+    .proof-popup-capsule img {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .proof-text-block {
+      font-size: 0.82rem;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+    .proof-text-block strong {
+      color: var(--text-main);
+    }
+
+    /* System Toast Component */
+    .system-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(40px);
+      background: #fff;
+      color: #030207;
+      padding: 12px 28px;
+      border-radius: 99px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      opacity: 0;
+      z-index: 6000;
+      pointer-events: none;
+      transition: transform 0.3s var(--ease-fluid), opacity 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .system-toast.is-active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   </style>
 </head>
 <body>
-  <div class="glow-bg"><span></span><span></span></div>
 
-<!-- Real-time Flash Sale Countdown Bar -->
-<div class="ticker-bar display" id="countdownBar">
-  ⚡ FLASH SALE ALERT: ACCESS UP TO 65% OFF DIRECT PRICING — TIME LEFT: <span id="timerClock"><span class="timer-unit">00</span>:<span class="timer-unit">00</span>:<span class="timer-unit">00</span></span>
-</div>
-
-<!-- Header Navigation -->
-<header>
-  <div class="logo-block" onclick="resetGrid()">
-    <span class="logo-dot"></span>
-    <span class="brand-name display">Drift</span>
+  <!-- Background Aurora Vectors -->
+  <div class="aurora-container">
+    <div class="aurora-sphere aurora-1"></div>
+    <div class="aurora-sphere aurora-2"></div>
   </div>
-  <div class="nav-actions">
-    <button class="nav-btn" onclick="openDrawer()">Bag <span class="counter-badge" id="cartBadge">0</span></button>
-  </div>
-</header>
 
-<main>
-  <!-- Hero Area -->
-  <section class="hero">
-    <h1 class="display">Direct Sourced.<br><span>Smarter Price.</span></h1>
-    <p>Premium viral gadgets and high-end tech lifestyle components directly extracted from premium manufacturing networks.</p>
-  </section>
-
-  <!-- Premium Filtering Components -->
-  <div class="search-row">
-    <div class="search-input-wrap">
-      <input id="searchQuery" placeholder="Search factory catalog..." onkeydown="if(event.key==='Enter') syncCatalog()">
+  <!-- Urgency Countdown Banner -->
+  <div class="urgency-ticker display-font">
+    ⚡ Factory Allocation Window Closing Soon — Guaranteed Lowest Direct Sourced Pricing: 
+    <div class="countdown-wrapper" id="tickerClock">
+      <span class="countdown-block" id="clockH">02</span>:
+      <span class="countdown-block" id="clockM">44</span>:
+      <span class="countdown-block" id="clockS">12</span>
     </div>
-    <button class="search-btn display" onclick="syncCatalog()">Filter</button>
   </div>
 
-  <div class="cat-scroller">
-    <div class="cat-chip active" onclick="switchCategory('', this)">All Innovations</div>
-    <div class="cat-chip" onclick="switchCategory('30', this)">Smart Technology</div>
-    <div class="cat-chip" onclick="switchCategory('200000344', this)">Wearable Devices</div>
-    <div class="cat-chip" onclick="switchCategory('12', this)">Home Automation</div>
-    <div class="cat-chip" onclick="switchCategory('2', this)">Cosmetics & Beauty</div>
-  </div>
-
-  <!-- Dynamic Product Showcase Grid Container -->
-  <div class="product-grid" id="productGrid">
-    <div class="spinner"></div>
-  </div>
-</main>
-
-<!-- ---------- Dynamic Product Specifications Modal ---------- -->
-<div class="modal-backdrop" id="productModal" onclick="if(event.target===this) toggleModal(false)">
-  <div class="modal-wrapper">
-    <button class="modal-close-trigger" onclick="toggleModal(false)">×</button>
-    <div class="modal-left">
-      <img id="modalImg" class="modal-main-img" src="" alt="Focus Media">
+  <!-- Core Nav bar -->
+  <nav class="main-nav">
+    <a href="#" class="brand-identity" id="navLogoHome">
+      <span class="brand-core-dot"></span>
+      <span class="brand-title-text display-font">Drift</span>
+    </a>
+    <div class="nav-interaction-cluster">
+      <button class="bag-trigger-button" id="cartOpenButton">
+        Shopping Bag 
+        <span class="bag-quantity-badge" id="cartCounterGlobal">0</span>
+      </button>
     </div>
-    <div class="modal-right">
-      <h2 class="display" id="modalTitle">Product Engineering Title</h2>
-      <div class="current-price" style="font-size: 1.8rem;" id="modalPrice">$0.00</div>
+  </nav>
+
+  <main>
+    <!-- Section Hero -->
+    <section class="hero-container">
+      <h1 class="hero-h1 display-font">Direct Sourced.<br><span>Smarter Price.</span></h1>
+      <p class="hero-p">Premium viral gadgets and high-end tech lifestyle components directly extracted from global distribution pipelines.</p>
       
-      <!-- Scarcity Trigger Gauge -->
-      <div class="urgency-meter">
-        <div style="display: flex; justify-content: space-between; font-weight:600; font-size:0.75rem; color:var(--coral);">
-          <span>🔥 HIGH DEMAND ITEM</span>
-          <span id="stockCountText">Only 3 units left in stock!</span>
+      <!-- Sourcing Search Bar Terminal -->
+      <div class="filter-console-row">
+        <div class="input-glass-wrapper">
+          <input type="text" id="catalogSearchField" placeholder="Search factory infrastructure allocations...">
         </div>
-        <div class="meter-track"><div class="meter-fill"></div></div>
+        <button class="console-action-button display-font" id="catalogSearchTrigger">Filter</button>
       </div>
 
-      <div style="font-size:0.88rem; line-height:1.6; color:var(--muted); max-height:150px; overflow-y:auto;" id="modalDescription"></div>
-      
-      <button class="btn btn-primary" onclick="addActiveToBag()">Add To Shopping Bag</button>
-    </div>
-  </div>
-</div>
-
-<!-- ---------- Immersive Cart System Drawer ---------- -->
-<div class="drawer-backdrop" id="cartDrawer" onclick="if(event.target===this) toggleDrawer(false)">
-  <div class="drawer-panel">
-    <div class="drawer-header">
-      <h3 class="display">Your Curated Bag</h3>
-      <button style="background:none; border:none; font-size:1.5rem; color:var(--muted); cursor:pointer;" onclick="toggleDrawer(false)">×</button>
-    </div>
-    <div class="drawer-items" id="drawerItems"></div>
-    <div class="drawer-footer">
-      <div style="display:flex; justify-content:space-between; font-weight:700; font-family:'Space Grotesk',sans-serif; margin-bottom:20px; font-size:1.2rem;">
-        <span>Estimated Total</span>
-        <span id="drawerTotal" style="color:var(--teal)">$0.00</span>
+      <!-- Category Filter Track -->
+      <div class="category-track" id="categoryTrackContainer">
+        <div class="category-pill is-active" data-cat-id="">All Formats</div>
+        <div class="category-pill" data-cat-id="30">Smart Technology</div>
+        <div class="category-pill" data-cat-id="200000344">Wearables</div>
+        <div class="category-pill" data-cat-id="12">Home Automation</div>
+        <div class="category-pill" data-cat-id="2">Cosmetics & Beauty</div>
       </div>
-      <button class="btn btn-primary" style="width:100%; padding:15px;" onclick="triggerCheckout()">SECURE CHECKOUT BACKEND</button>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- ---------- Live Interactive Social Proof Popup Feed ---------- -->
-<div class="live-popup" id="socialProofPopup">
-  <img id="popupImg" src="" alt="Recent order thumbnail">
-  <div class="live-popup-text">
-    <span id="popupUser">Someone from Rawalpindi</span> just bought <strong id="popupProdName">Smart Fitness Tracker</strong>
-    <div style="color: var(--teal); font-size:0.68rem; margin-top:2px; font-weight:600;">Verified Transaction ⚡</div>
-  </div>
-</div>
+    <!-- Structural Matrix Showcase Area -->
+    <section class="showcase-matrix-wrapper">
+      <div class="product-structural-grid" id="matrixProductGrid">
+        <!-- Initial Dynamic Core Generated Content Loops -->
+      </div>
+    </section>
+  </main>
 
-<div class="toast-alert" id="toastAlert">Item Synced Successfully</div>
-
-<script>
-  const BACKEND_URL = "https://dropship-worker.azaanbk30.workers.dev";
-  let catalogItems = [];
-  let customerCart = [];
-  let selectedCatId = "";
-  let currentActiveItem = null;
-
-  // 1. Fetch Dynamic Dropship Feeds
-  async function syncCatalog(catId = "") {
-    const grid = document.getElementById("productGrid");
-    grid.innerHTML = '<div class="spinner"></div>';
-    selectedCatId = catId;
-    
-    const query = document.getElementById("searchQuery").value.trim();
-    let destination = `${BACKEND_URL}/api/products?page=1`;
-    if (query) destination += `&keyword=${encodeURIComponent(query)}`;
-    if (selectedCatId) destination += `&categoryId=${selectedCatId}`;
-
-    try {
-      const response = await fetch(destination);
-      const output = await response.json();
-      catalogItems = output.products || [];
-      renderCatalogGrid();
-    } catch (e) {
-      grid.innerHTML = `<div style="text-align:center; color:var(--muted); padding:50px 0;">Fulfillment line unavailable.</div>`;
-    }
-  }
-
-  // 2. Render Cards with dynamic discount calculation
-  function renderCatalogGrid() {
-    const grid = document.getElementById("productGrid");
-    if(!catalogItems.length) {
-      grid.innerHTML = `<div style="text-align:center; color:var(--muted); padding:50px 0;">No active trends matched.</div>`;
-      return;
-    }
-    
-    grid.innerHTML = catalogItems.map(item => {
-      const parsedPrice = parseFloat(item.sellingPrice);
-      const highPrice = (parsedPrice * 1.65).toFixed(2);
-      // Fixed dynamic star calculation
-      const activeStars = Math.floor(Math.random() * 2) + 4; 
-      const reviewVolume = Math.floor(Math.random() * 180) + 40;
-
-      return `
-        <div class="card-3d" onclick="launchModalDetails('${item.id}')">
-          <div class="card-img-container">
-            <span class="badge-discount">SAVE 40%</span>
-            <span class="badge-trending">TRENDING 🔥</span>
-            <img src="${item.image}" alt="${item.name}" loading="lazy">
+  <!-- ==========================================================================
+       DYNAMIC DETAIL SPECIFICATION CONSOLE (MODAL HUD)
+       ========================================================================== */ -->
+  <div class="modal-overlay" id="productDetailModal">
+    <div class="modal-viewport-container">
+      <button class="modal-dismiss-trigger" id="modalCloseTrigger">×</button>
+      <div class="modal-gallery-pane">
+        <img class="modal-primary-image" id="targetModalImage" src="" alt="Fulfillment View">
+      </div>
+      <div class="modal-data-pane">
+        <h2 class="display-font" id="targetModalTitle">Allocation Unit</h2>
+        <div class="price-active" style="font-size: 1.8rem;" id="targetModalPrice">$0.00</div>
+        
+        <!-- Scarcity Infrastructure Gauge -->
+        <div class="scarcity-index-meter">
+          <div class="scarcity-text-row">
+            <span>🔥 ALLOCATION EXHAUSTION CRITICAL</span>
+            <span id="targetModalScarcityText">Only 3 items remaining!</span>
           </div>
-          <div class="card-meta">
-            <div class="rating-stars">
-              ${"★".repeat(activeStars)}${"☆".repeat(5 - activeStars)}
-              <span class="rating-count">(${reviewVolume})</span>
-            </div>
-            <div class="card-title">${item.name}</div>
-            <div class="card-pricing">
-              <span class="current-price">$${item.sellingPrice}</span>
-              <span class="slashed-price">$${highPrice}</span>
-            </div>
-            <div class="card-buttons">
-              <button class="btn btn-primary" onclick="event.stopPropagation(); rapidBagInjection('${item.id}')">Direct Buy</button>
-            </div>
+          <div class="scarcity-track-bar">
+            <div class="scarcity-fill-bar" id="targetModalProgressBar"></div>
           </div>
         </div>
-      `;
-    }).join("");
-  }
 
-  // 3. Launch Advanced Detail Engine
-  async function launchModalDetails(pId) {
-    toggleModal(true);
-    document.getElementById("modalTitle").textContent = "Parsing Data Hub...";
-    document.getElementById("modalPrice").textContent = "";
-    document.getElementById("modalDescription").textContent = "";
-    document.getElementById("modalImg").src = "";
-
-    try {
-      const res = await fetch(`${BACKEND_URL}/api/product?pid=${pId}`);
-      const data = await res.json();
-      currentActiveItem = data;
-
-      document.getElementById("modalTitle").textContent = data.name;
-      document.getElementById("modalPrice").textContent = `$${data.variants?.[0]?.sellingPrice || data.sellingPrice || "19.99"}`;
-      document.getElementById("modalDescription").innerHTML = data.description || "Direct factory verified listing.";
-      document.getElementById("modalImg").src = data.images?.[0] || data.image;
-      document.getElementById("stockCountText").textContent = `Only ${Math.floor(Math.random() * 5) + 2} units left in stock!`;
-    } catch(err) {
-      document.getElementById("modalTitle").textContent = "Data connection interrupted.";
-    }
-  }
-
-  function toggleModal(status) {
-    const m = document.getElementById("productModal");
-    status ? m.classList.add("active") : m.classList.remove("active");
-  }
-
-  // 4. Cart Mechanics
-  function rapidBagInjection(id) {
-    const item = catalogItems.find(i => i.id === id);
-    if(!item) return;
-    injectCartItem({
-      id: item.id,
-      name: item.name,
-      sellingPrice: parseFloat(item.sellingPrice),
-      image: item.image
-    });
-  }
-
-  function addActiveToBag() {
-    if(!currentActiveItem) return;
-    injectCartItem({
-      id: currentActiveItem.id,
-      name: currentActiveItem.name,
-      sellingPrice: parseFloat(currentActiveItem.variants?.[0]?.sellingPrice || currentActiveItem.sellingPrice || 19.99),
-      image: currentActiveItem.images?.[0] || currentActiveItem.image
-    });
-    toggleModal(false);
-    toggleDrawer(true);
-  }
-
-  function injectCartItem(obj) {
-    const target = customerCart.find(i => i.id === obj.id);
-    if(target) target.qty += 1;
-    else customerCart.push({ ...obj, qty: 1 });
-    refreshCartEngine();
-    dispatchToast("Item added to curated bag!");
-  }
-  function refreshCartEngine() {
-    document.getElementById("cartBadge").textContent = customerCart.reduce((acc, i) => acc + i.qty, 0);
-    document.getElementById("drawerItems").innerHTML = customerCart.map(i => `
-      <div class="drawer-item">
-        <img src="${i.image}">
-        <div style="flex:1; display:flex; flex-direction:column; justify-content:space-between; font-size:0.85rem;">
-          <div style="font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:260px;">${i.name}</div>
-          <div style="color:var(--teal); font-weight:700;">$${i.sellingPrice} × ${i.qty}</div>
-          <div style="display:flex; gap:10px; margin-top:4px;">
-            <button style="background:none; border:none; color:var(--coral); cursor:pointer; font-size:0.75rem;" onclick="removeCartId('${i.id}')">Remove Item</button>
-          </div>
-        </div>
+        <div class="modal-scrollable-details" id="targetModalDesc"></div>
+        
+        <button class="base-button button-primary display-font" style="padding: 16px;" id="modalAddBagTrigger">
+          Allocate To Shopping Bag
+        </button>
       </div>
-    `).join("") || `<div style="text-align:center; padding:50px 0; color:var(--muted)">Your bag is unselected.</div>`;
-
-    const grandTotal = customerCart.reduce((sum, i) => sum + (i.sellingPrice * i.qty), 0);
-    document.getElementById("drawerTotal").textContent = `$${grandTotal.toFixed(2)}`;
-  }
-
-  function removeCartId(id) {
-    customerCart = customerCart.filter(i => i.id !== id);
-    refreshCartEngine();
-  }
-
-  function toggleDrawer(status) {
-    const d = document.getElementById("cartDrawer");
-    status ? d.classList.add("active") : d.classList.remove("active");
-  }
-  function openDrawer() { toggleDrawer(true); }
-
-  function triggerCheckout() {
-    if(!customerCart.length) { dispatchToast("Bag is empty"); return; }
-    dispatchToast("Routing to billing infrastructure...");
-    // Direct checkout trigger endpoint sequence ready
-  }
-
-  // 5. Advanced Interactive Filters
-  function switchCategory(id, el) {
-    document.querySelectorAll(".cat-chip").forEach(c => c.classList.remove("active"));
-    el.classList.add("active");
-    syncCatalog(id);
-  }
-
-  function resetGrid() {
-    document.getElementById("searchQuery").value = "";
-    switchCategory('', document.querySelector(".cat-chip"));
-  }
-
-  function dispatchToast(msg) {
-    const t = document.getElementById("toastAlert");
-    t.textContent = msg; t.classList.add("reveal");
-    setTimeout(() => t.classList.remove("reveal"), 2000);
-  }
-
-  // 6. Real-time Flash Sale Countdown Clock Implementation
-  function initializeSaleClock() {
-    let duration = 3 * 60 * 60 + 45 * 60 + 12; // 3 Hours countdown loop resets naturally
-    setInterval(() => {
-      duration--;
-      if(duration <= 0) duration = 3 * 60 * 60;
-      const hrs = String(Math.floor(duration / 3600)).padStart(2, '0');
-      const mins = String(Math.floor((duration % 3600) / 60)).padStart(2, '0');
-      const secs = String(duration % 60).padStart(2, '0');
-      document.getElementById("timerClock").innerHTML = `<span class="timer-unit">${hrs}</span>:<span class="timer-unit">${mins}</span>:<span class="timer-unit">${secs}</span>`;
-    }, 1000);
-  }
-
-  // 7. Dynamic Social Proof Purchase Feed Generator Loop
-  function seedSocialProofFeed() {
-    const regions = ["Islamabad", "Rawalpindi", "Lahore", "Karachi", "Faisalabad", "Peshawar", "Sialkot"];
-    const buyers = ["Ahmad K.", "Zainab M.", "M. Ali", "Sana R.", "Hamza T.", "Usman J."];
-    
-    setInterval(() => {
-      if(!catalogItems.length) return;
-      const randomItem = catalogItems[Math.floor(Math.random() * catalogItems.length)];
-      const randomRegion = regions[Math.floor(Math.random() * regions.length)];
-      const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
+    </div>
+  </div>
+   <!-- ==========================================================================
+       SHOPPING BAG BACKEND INFRASTRUCTURE SYSTEM (DRAWER PANEL)
+       ========================================================================== */ -->
+  <div class="drawer-overlay" id="shoppingBagDrawer">
+    <div class="drawer-core-panel">
+      <div class="drawer-header-hub">
+        <h3 class="display-font" style="font-size: 1.3rem;">Your Strategic Allocation Bag</h3>
+        <button class="drawer-dismiss-btn" id="cartCloseTrigger">×</button>
+      </div>
       
-      document.getElementById("popupImg").src = randomItem.image;
-      document.getElementById("popupUser").innerHTML = `<strong>${randomBuyer}</strong> from ${randomRegion}`;
-      document.getElementById("popupProdName").textContent = randomItem.name.slice(0, 32) + "...";
-      
-      const popup = document.getElementById("socialProofPopup");
-      popup.classList.add("visible");
-      
-      setTimeout(() => {
-        popup.classList.remove("visible");
-      }, 4000);
+      <!-- Scrollable Products Target Area -->
+      <div class="drawer-scrollable-items" id="bagItemsTargetWrapper">
+        <!-- Structural Row Items Render In Realtime -->
+      </div>
 
-    }, 14000); // Popup triggers every 14 seconds seamlessly
-  }
+      <div class="drawer-footer-hub">
+        <div class="shipping-threshold-meter" id="shippingMeterContainer">
+          <!-- Real-Time Variable Shipping Calculations -->
+        </div>
+        <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 20px; font-size: 1.25rem;">
+          <span class="display-font">Aggregated Value</span>
+          <span id="bagAggregatedTotal" style="color: var(--brand-accent);">$0.00</span>
+        </div>
+        <button class="base-button button-primary display-font" style="padding: 16px;" id="checkoutPipelineTrigger">
+          PROCEED TO ROUTING SECURE MATRIX
+        </button>
+      </div>
+    </div>
+  </div>
 
-  // Initialize Core Engines
-  syncCatalog();
-  initializeSaleClock();
-  seedSocialProofFeed();
-</script>
+  <!-- Real-Time Social Proof Popups -->
+  <div class="proof-popup-capsule" id="liveSocialProofPopup">
+    <img id="proofTargetImg" src="" alt="Allocated Asset">
+    <div class="proof-text-block">
+      <span id="proofTargetUser">Client</span> acquired <strong id="proofTargetProduct">Asset Unit</strong>
+      <div style="color: var(--brand-accent); font-size: 0.72rem; margin-top: 3px; font-weight: 700;">
+        Fulfillment Dispatched ⚡
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Core -->
+  <div class="system-toast" id="globalSystemToast">Fulfillment Loop Updated</div>
+
+  <!-- ==========================================================================
+       THE MAIN SYSTEM ARCHITECTURE ENGINE
+       ========================================================================== */ -->
+  <script>
+    (function () {
+      "use strict";
+
+      // 1. App Configuration & State Registry
+      const CONFIG = {
+        BACKEND_ENDPOINT: "https://dropship-worker.azaanbk30.workers.dev",
+        BACKUP_FAILSAFE_POOL_SIZE: 12,
+        PERSISTENCE_KEY: "DRIFT_PROD_BAG_STATE"
+      };
+
+      let AppState = {
+        catalogInventory: [],
+        failsafeInventoryPool: [], // Persistent data cache to handle un-matched categorizations
+        shoppingBag: [],
+        currentSelectedCategory: "",
+        activeModalProduct: null
+      };
+
+      // UI Component Registry Locators
+      const DOM = {
+        matrixGrid: document.getElementById("matrixProductGrid"),
+        searchInput: document.getElementById("catalogSearchField"),
+        searchBtn: document.getElementById("catalogSearchTrigger"),
+        categoryPills: document.querySelectorAll(".category-pill"),
+        globalCounter: document.getElementById("cartCounterGlobal"),
+        bagItemsWrapper: document.getElementById("bagItemsTargetWrapper"),
+        bagTotal: document.getElementById("bagAggregatedTotal"),
+        shippingMeter: document.getElementById("shippingMeterContainer"),
+        
+        // Drawer & Modal Viewports
+        cartDrawer: document.getElementById("shoppingBagDrawer"),
+        cartOpenBtn: document.getElementById("cartOpenButton"),
+        cartCloseBtn: document.getElementById("cartCloseTrigger"),
+        detailModal: document.getElementById("productDetailModal"),
+        modalCloseBtn: document.getElementById("modalCloseTrigger"),
+        modalAddTrigger: document.getElementById("modalAddBagTrigger"),
+        navHomeLogo: document.getElementById("navLogoHome"),
+        
+        // Modal Interior Elements
+        mImg: document.getElementById("targetModalImage"),
+        mTitle: document.getElementById("targetModalTitle"),
+        mPrice: document.getElementById("targetModalPrice"),
+        mDesc: document.getElementById("targetModalDesc"),
+        mScarcityText: document.getElementById("targetModalScarcityText"),
+        mProgressBar: document.getElementById("targetModalProgressBar"),
+        
+        // Social Proof Feed elements
+        proofPopup: document.getElementById("liveSocialProofPopup"),
+        proofImg: document.getElementById("proofTargetImg"),
+        proofUser: document.getElementById("proofTargetUser"),
+        proofProduct: document.getElementById("proofTargetProduct"),
+        
+        // Toast Interface
+        toast: document.getElementById("globalSystemToast")
+      };
+
+      // ==========================================================================
+      // CORE PIPELINE LIFECYCLE INITIALIZER
+      // ==========================================================================
+      function systemCoreBootstrap() {
+        registerSystemEventBindings();
+        synchronizeInventoryStream("");
+        initializeSaleCountdownEngine();
+        initializeSocialProofLoop();
+        retrieveLocalBagPersistence();
+      }
+
+      function registerSystemEventBindings() {
+        // Search Pipeline Event Triggers
+        DOM.searchBtn.addEventListener("click", () => synchronizeInventoryStream(AppState.currentSelectedCategory));
+        DOM.searchInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") synchronizeInventoryStream(AppState.currentSelectedCategory);
+        });
+
+        // Dynamic Category Selection Mapping
+        document.getElementById("categoryTrackContainer").addEventListener("click", (e) => {
+          const targetedPill = e.target.closest(".category-pill");
+          if (!targetedPill) return;
+
+          document.querySelectorAll(".category-pill").forEach(p => p.classList.remove("is-active"));
+          targetedPill.classList.add("is-active");
+
+          AppState.currentSelectedCategory = targetedPill.getAttribute("data-cat-id");
+          synchronizeInventoryStream(AppState.currentSelectedCategory);
+        });
+
+        // Interface Window Toggles
+        DOM.cartOpenBtn.addEventListener("click", () => toggleDrawerDisplay(true));
+        DOM.cartCloseBtn.addEventListener("click", () => toggleDrawerDisplay(false));
+        DOM.cartDrawer.addEventListener("click", (e) => {
+          if (e.target === DOM.cartDrawer) toggleDrawerDisplay(false);
+        });
+
+        DOM.modalCloseBtn.addEventListener("click", () => toggleModalDisplay(false));
+        DOM.detailModal.addEventListener("click", (e) => {
+          if (e.target === DOM.detailModal) toggleModalDisplay(false);
+        });
+
+        DOM.modalAddTrigger.addEventListener("click", executeActiveModalBagInjection);
+        DOM.navHomeLogo.addEventListener("click", (e) => {
+          e.preventDefault();
+          DOM.searchInput.value = "";
+          const targetAllFormatPill = document.querySelector(".category-pill[data-cat-id='']");
+          if(targetAllFormatPill) targetAllFormatPill.click();
+        });
+
+        // Checkout Trigger Event
+        document.getElementById("checkoutPipelineTrigger").addEventListener("click", executeSecureCheckoutRouting);
+      }
+
+      // ==========================================================================
+      // DYNAMIC CATALOG PROCESSING & MULTI-STATE RECOVERY (FALLBACK SYSTEM)
+      // ==========================================================================
+      async function synchronizeInventoryStream(categoryId = "") {
+        renderMatrixSkeletonLoading();
+        
+        const userQueryString = DOM.searchInput.value.trim();
+        let queryTargetEndpoint = `${CONFIG.BACKEND_ENDPOINT}/api/products?page=1`;
+        
+        if (userQueryString) queryTargetEndpoint += `&keyword=${encodeURIComponent(userQueryString)}`;
+        if (categoryId) queryTargetEndpoint += `&categoryId=${categoryId}`;
+
+        try {
+          const fetchResponse = await fetch(queryTargetEndpoint);
+          if (!fetchResponse.ok) throw new Error("Infrastructure Pipeline Exception");
+          
+          const networkPayload = await fetchResponse.json();
+          AppState.catalogInventory = networkPayload.products || [];
+          
+          // Seed our persistent Failsafe Pool with data on the initial launch sequence
+          if (AppState.catalogInventory.length > 0 && AppState.failsafeInventoryPool.length === 0) {
+            AppState.failsafeInventoryPool = [...AppState.catalogInventory];
+          }
+
+          evaluateAndRenderMatrix();
+        } catch (systemError) {
+          console.error("Failsafe Redirect Active:", systemError);
+          executeNetworkErrorUIRender();
+        }
+      }
+
+      function renderMatrixSkeletonLoading() {
+        let structuralSkeletonBlocks = "";
+        for (let idx = 0; idx < 8; idx++) {
+          structuralSkeletonBlocks += `
+            <div class="skeleton-card">
+              <div class="skeleton-media"></div>
+              <div class="skeleton-line" style="width: 40%;"></div>
+              <div class="skeleton-line" style="width: 85%;"></div>
+              <div class="skeleton-line" style="width: 60%;"></div>
+            </div>`;
+        }
+        DOM.matrixGrid.innerHTML = structuralSkeletonBlocks;
+      }
+
+      function evaluateAndRenderMatrix() {
+        // PROFESSIONAL STATE OVERRIDE: If a category is empty, pull dynamic backup allocation data
+        if (AppState.catalogInventory.length === 0) {
+          executeFallbackStructuralRender();
+          return;
+        }
+        executeStructuralGridGeneration(AppState.catalogInventory);
+      }
+
+      function executeFallbackStructuralRender() {
+        // Pull slice from backup pool matching architectural requirements
+        const fallbackSubCatalog = AppState.failsafeInventoryPool.slice(0, CONFIG.BACKUP_FAILSAFE_POOL_SIZE);
+        
+        let fallbackNoticeMarkup = `
+          <div class="fallback-state-container">
+            <div class="fallback-header display-font">Zero Category Matrix Allocations Available</div>
+            <div class="fallback-subheader">The requested classification node is exhausted. Displaying trending allocations from active vaults below.</div>
+          </div>
+        `;
+        
+        DOM.matrixGrid.innerHTML = fallbackNoticeMarkup;
+        executeStructuralGridGeneration(fallbackSubCatalog, true);
+      }
+
+      function executeStructuralGridGeneration(dataset, appendToFallback = false) {
+        const productCardsHTML = dataset.map(item => {
+          const structuralBasePrice = parseFloat(item.sellingPrice) || 19.99;
+          const industrialHighPrice = (structuralBasePrice * 1.55).toFixed(2);
+          
+          return `
+            <div class="matrix-card" data-card-pid="${item.id}">
+              <div class="card-media-vault">
+                <span class="label-discount">SAVE 55% DIRECT</span>
+                <span class="label-badge">VAULT SECURED 🔥</span>
+                <img src="${item.image}" alt="${item.name}" loading="lazy">
+              </div>
+              <div class="card-metadata-hull">
+                <div class="rating-stellar-cluster">
+                  ★★★★★ <span class="rating-stellar-volume">(${Math.floor(Math.random() * 140) + 45} Reviews)</span>
+                </div>
+                <div class="card-functional-title">${item.name}</div>
+                <div class="card-monetary-row">
+                  <span class="price-active">$${structuralBasePrice.toFixed(2)}</span>
+                  <span class="price-slashed">$${industrialHighPrice}</span>
+                </div>
+                <div class="card-action-hull">
+                  <button class="base-button button-primary display-font" data-action-pid="${item.id}">
+                    Direct Allocation Buy
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        if (appendToFallback) {
+          DOM.matrixGrid.insertAdjacentHTML('beforeend', productCardsHTML);
+        } else {
+          DOM.matrixGrid.innerHTML = productCardsHTML;
+        }
+
+        attachMatrixCardInteractionListeners();
+      }
+
+      function executeNetworkErrorUIRender() {
+        DOM.matrixGrid.innerHTML = `
+          <div class="fallback-state-container" style="border-color: var(--brand-secondary);">
+            <div class="fallback-header display-font" style="color: var(--brand-secondary);">Fulfillment Loop Pipeline Disrupted</div>
+            <div class="fallback-subheader">Secure core connection timing out. Verify local network structures.</div>
+            <button class="base-button button-primary fallback-action-btn" id="systemRetryPipelineBtn">Re-Establish Stream</button>
+          </div>`;
+        
+        document.getElementById("systemRetryPipelineBtn").addEventListener("click", () => systemCoreBootstrap());
+      }
+
+      function attachMatrixCardInteractionListeners() {
+        DOM.matrixGrid.querySelectorAll(".matrix-card").forEach(card => {
+          card.addEventListener("click", (e) => {
+            const targetedActionBtn = e.target.closest("[data-action-pid]");
+            const targetProductId = card.getAttribute("data-card-pid");
+            
+            if (targetedActionBtn) {
+              e.stopPropagation();
+              executeDirectCardBypassInjection(targetProductId);
+            } else {
+              launchAdvancedSpecificationConsole(targetProductId);
+            }
+          });
+        });
+      }
+
+      // ==========================================================================
+      // ADVANCED QUANTITATIVE STRUCTURAL SPECIFICATION PIPELINE (MODAL ENGINE)
+      // ==========================================================================
+      async function launchAdvancedSpecificationConsole(productId) {
+        toggleModalDisplay(true);
+        resetModalInteriorFields();
+
+        // Attempt retrieval from localized environment array pools first to achieve extreme perceived performance
+        let runtimeTargetMatch = AppState.catalogInventory.find(i => i.id === productId) || 
+                                 AppState.failsafeInventoryPool.find(i => i.id === productId);
+
+        if (!runtimeTargetMatch) return;
+
+        try {
+          // Dynamic query fetch loop to structural specifications endpoint
+          const specificationResponse = await fetch(`${CONFIG.BACKEND_ENDPOINT}/api/product?pid=${productId}`);
+          if (specificationResponse.ok) {
+            const deepProductPayload = await specificationResponse.json();
+            AppState.activeModalProduct = deepProductPayload;
+            populateModalInteriorElements(deepProductPayload);
+          } else {
+            populateModalInteriorElements(runtimeTargetMatch);
+          }
+        } catch(e) {
+          populateModalInteriorElements(runtimeTargetMatch);
+        }
+      }
+
+      function resetModalInteriorFields() {
+        DOM.mTitle.textContent = "Querying Database Nodes...";
+        DOM.mPrice.textContent = "";
+        DOM.mDesc.textContent = "Accessing dynamic system logs and encryption parameters for direct factory specifications verification...";
+        DOM.mImg.src = "";
+        DOM.mProgressBar.style.width = "100%";
+      }
+
+      function populateModalInteriorElements(productObj) {
+        AppState.activeModalProduct = productObj;
+        DOM.mTitle.textContent = productObj.name;
+        
+        const systemPriceEvaluation = productObj.variants?.[0]?.sellingPrice || productObj.sellingPrice || "24.99";
+        DOM.mPrice.textContent = `$${parseFloat(systemPriceEvaluation).toFixed(2)}`;
+        
+        DOM.mDesc.innerHTML = productObj.description || "Direct factory verified layout. Complete system tracking and authentication protocols active inside shipping architecture.";
+        DOM.mImg.src = productObj.images?.[0] || productObj.image;
+        
+        const randomInventoryScarcityVolume = Math.floor(Math.random() * 4) + 2;
+        DOM.mScarcityText.textContent = `Only ${randomInventoryScarcityVolume} internal units remaining!`;
+        DOM.mProgressBar.style.width = `${(randomInventoryScarcityVolume / 6) * 100}%`;
+      }
+
+      function toggleModalDisplay(status) {
+        status ? DOM.detailModal.classList.add("is-open") : DOM.detailModal.classList.remove("is-open");
+      }
+
+      // ==========================================================================
+      // BACKEND PERSISTENT BASKET SUBSYSTEMS (SHOPPING BAG OPERATIONS)
+      // ==========================================================================
+      function executeDirectCardBypassInjection(id) {
+        const itemObj = AppState.catalogInventory.find(i => i.id === id) || 
+                        AppState.failsafeInventoryPool.find(i => i.id === id);
+        if (!itemObj) return;
+
+        injectItemToStrategicBag({
+          id: itemObj.id,
+          name: itemObj.name,
+          price: parseFloat(itemObj.sellingPrice) || 19.99,
+          image: itemObj.image
+        });
+      }
+
+      function executeActiveModalBagInjection() {
+        if (!AppState.activeModalProduct) return;
+        
+        const rawModalPrice = AppState.activeModalProduct.variants?.[0]?.sellingPrice || AppState.activeModalProduct.sellingPrice || 19.99;
+        
+        injectItemToStrategicBag({
+          id: AppState.activeModalProduct.id,
+          name: AppState.activeModalProduct.name,
+          price: parseFloat(rawModalPrice),
+          image: AppState.activeModalProduct.image || AppState.activeModalProduct.images?.[0]
+        });
+
+        toggleModalDisplay(false);
+        toggleDrawerDisplay(true);
+      }
+
+      function injectItemToStrategicBag(formattedAsset) {
+        const localizedBagMatch = AppState.shoppingBag.find(i => i.id === formattedAsset.id);
+        
+        if (localizedBagMatch) {
+          localizedBagMatch.quantity += 1;
+        } else {
+          AppState.shoppingBag.push({
+            id: formattedAsset.id,
+            name: formattedAsset.name,
+            price: formattedAsset.price,
+            image: formattedAsset.image,
+            quantity: 1
+          });
+        }
+
+        processAndSynchronizeBagState();
+        dispatchSystemToast("Asset Unit Synced To Allocation Matrix");
+      }
+
+      function processAndSynchronizeBagState() {
+        saveBagPersistenceToDisk();
+        
+        const absoluteBagUnitQuantity = AppState.shoppingBag.reduce((total, item) => total + item.quantity, 0);
+        DOM.globalCounter.textContent = absoluteBagUnitQuantity;
+
+        if (AppState.shoppingBag.length === 0) {
+          DOM.bagItemsWrapper.innerHTML = `
+            <div style="text-align:center; padding: 80px 20px; color: var(--text-muted);">
+              <div style="font-size: 1.5rem; margin-bottom: 10px;">Empty Allocation Bay</div>
+              <div style="font-size: 0.85rem;">Select assets to establish systemic infrastructure routing.</div>
+            </div>`;
+          DOM.bagTotal.textContent = "$0.00";
+          DOM.shippingMeter.innerHTML = "";
+          return;
+        }
+
+        DOM.bagItemsWrapper.innerHTML = AppState.shoppingBag.map(item => `
+          <div class="bag-item-row">
+            <img src="${item.image}" alt="Asset Allocation Graphic">
+            <div class="bag-item-details">
+              <div class="bag-item-title">${item.name}</div>
+              <div class="bag-item-controls">
+                <div style="font-weight: 700; color: var(--brand-accent); font-size: 0.95rem;">
+                  $${(item.price * item.quantity).toFixed(2)}
+                </div>
+                <div class="quantity-stepper">
+                  <button class="stepper-btn" data-stepper-decrement="${item.id}">-</button>
+                  <span class="stepper-value">${item.quantity}</span>
+                  <button class="stepper-btn" data-stepper-increment="${item.id}">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          `).join("");
+
+        const absoluteAggregatedMonetarySum = AppState.shoppingBag.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        DOM.bagTotal.textContent = `$${absoluteAggregatedMonetarySum.toFixed(2)}`;
+
+        calculateDynamicShippingThresholds(absoluteAggregatedMonetarySum);
+        attachBagInteractiveControls();
+      }
+
+      function calculateDynamicShippingThresholds(currentTotalSum) {
+        const freeShippingThresholdLimit = 75.00;
+        if (currentTotalSum >= freeShippingThresholdLimit) {
+          DOM.shippingMeter.innerHTML = `
+            <div style="color: var(--brand-accent); font-weight: 700; display:flex; align-items:center; gap:6px;">
+              <span>✓</span> UNLOCKED: Premium Worldwide Priority Allocation Dispatch active.
+            </div>`;
+        } else {
+          const missingSumMargin = freeShippingThresholdLimit - currentTotalSum;
+          DOM.shippingMeter.innerHTML = `
+            <div style="color: var(--text-muted); line-height: 1.4;">
+              Add <strong style="color: var(--brand-secondary)">$${missingSumMargin.toFixed(2)}</strong> more to unlock Priority Air Carrier Dispatch.
+              <div style="width:100%; height:4px; background:rgba(255,255,255,0.05); border-radius:2px; margin-top:6px; overflow:hidden;">
+                <div style="height:100%; width:${(currentTotalSum / freeShippingThresholdLimit) * 100}%; background:var(--brand-secondary);"></div>
+              </div>
+            </div>`;
+        }
+      }
+
+      function attachBagInteractiveControls() {
+        DOM.bagItemsWrapper.querySelectorAll(".stepper-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const incrementId = btn.getAttribute("data-stepper-increment");
+            const decrementId = btn.getAttribute("data-stepper-decrement");
+
+            if (incrementId) {
+              AppState.shoppingBag.find(i => i.id === incrementId).quantity += 1;
+            } else if (decrementId) {
+              const matchingItem = AppState.shoppingBag.find(i => i.id === decrementId);
+              matchingItem.quantity -= 1;
+              if (matchingItem.quantity <= 0) {
+                AppState.shoppingBag = AppState.shoppingBag.filter(i => i.id !== decrementId);
+              }
+            }
+            processAndSynchronizeBagState();
+          });
+        });
+      }
+
+      function toggleDrawerDisplay(status) {
+        status ? DOM.cartDrawer.classList.add("is-active") : DOM.cartDrawer.classList.remove("is-active");
+      }
+
+      function saveBagPersistenceToDisk() {
+        localStorage.setItem(CONFIG.PERSISTENCE_KEY, JSON.stringify(AppState.shoppingBag));
+      }
+
+      function retrieveLocalBagPersistence() {
+        const storageAssetPayload = localStorage.getItem(CONFIG.PERSISTENCE_KEY);
+        if (storageAssetPayload) {
+          try {
+            AppState.shoppingBag = JSON.parse(storageAssetPayload) || [];
+            processAndSynchronizeBagState();
+          } catch(e) {
+            AppState.shoppingBag = [];
+          }
+        }
+      }
+
+      function executeSecureCheckoutRouting() {
+        if (AppState.shoppingBag.length === 0) {
+          dispatchSystemToast("Allocation pipeline holds zero targets.");
+          return;
+        }
+        dispatchSystemToast("Initializing Payment Gateway API Handshakes...");
+      }
+
+      // ==========================================================================
+      // TICKER ENGINE CLOCK LOOP MECHANICS
+      // ==========================================================================
+      function initializeSaleCountdownEngine() {
+        let cyclicSecondsTimer = 3 * 60 * 60 + 44 * 60 + 10;
+        
+        const hrsDisplayElement = document.getElementById("clockH");
+        const minsDisplayElement = document.getElementById("clockM");
+        const secsDisplayElement = document.getElementById("clockS");
+
+        setInterval(() => {
+          cyclicSecondsTimer--;
+          if (cyclicSecondsTimer <= 0) cyclicSecondsTimer = 3 * 60 * 60; // Natural loop normalization reset
+
+          const functionalHours = Math.floor(cyclicSecondsTimer / 3600);
+          const functionalMinutes = Math.floor((cyclicSecondsTimer % 3600) / 60);
+          const functionalSeconds = cyclicSecondsTimer % 60;
+
+          hrsDisplayElement.textContent = String(functionalHours).padStart(2, "0");
+          minsDisplayElement.textContent = String(functionalMinutes).padStart(2, "0");
+          secsDisplayElement.textContent = String(functionalSeconds).padStart(2, "0");
+        }, 1000);
+      }
+
+      // ==========================================================================
+      // SOCIAL PROOF LIVE DATA FEED ENGINE LOOPS
+      // ==========================================================================
+      function initializeSocialProofLoop() {
+        const allocationMarkets = ["Islamabad", "Rawalpindi", "Lahore", "Karachi", "Faisalabad", "Peshawar", "Sialkot", "Multan"];
+        const allocationClients = ["Ahmad K.", "Zainab M.", "M. Ali", "Sana R.", "Hamza T.", "Usman J.", "Omer F."];
+
+        setInterval(() => {
+          const operationalInventoryPool = AppState.catalogInventory.length > 0 ? 
+                                           AppState.catalogInventory : AppState.failsafeInventoryPool;
+          
+          if (operationalInventoryPool.length === 0) return;
+
+          const singleRandomProduct = operationalInventoryPool[Math.floor(Math.random() * operationalInventoryPool.length)];
+          const singleRandomMarket = allocationMarkets[Math.floor(Math.random() * allocationMarkets.length)];
+          const singleRandomClient = allocationClients[Math.floor(Math.random() * allocationClients.length)];
+
+          DOM.proofImg.src = singleRandomProduct.image;
+          DOM.proofUser.innerHTML = `<strong>${singleRandomClient}</strong> from ${singleRandomMarket}`;
+          DOM.proofProduct.textContent = singleRandomProduct.name.length > 36 ? 
+                                         singleRandomProduct.name.slice(0, 34) + "..." : singleRandomProduct.name;
+
+          DOM.proofPopup.classList.add("is-visible");
+
+          setTimeout(() => {
+            DOM.proofPopup.classList.remove("is-visible");
+          }, 4500);
+
+        }, 16000); // Dynamic triggering interval loop sequence
+      }
+
+      function dispatchSystemToast(message) {
+        DOM.toast.textContent = message;
+        DOM.toast.classList.add("is-active");
+        setTimeout(() => {
+          DOM.toast.classList.remove("is-active");
+        }, 2200);
+      }
+
+      // Bootstrap Global Software Runtime
+      systemCoreBootstrap();
+    })();
+  </script>
 </body>
 </html>
+ 
