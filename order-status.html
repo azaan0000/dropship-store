@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Status — Drift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#0d0c14; --surface:#1a1826; --line:rgba(255,255,255,.1); --text:#f2f0f8; --muted:#9a95ad; --violet:#8b7cff; --coral:#ff7a6b; --teal:#3fe0c5; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--text); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .card { max-width:420px; width:100%; background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:36px 28px; text-align:center; }
+  .icon { width:64px; height:64px; margin:0 auto 20px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; }
+  .icon.success { background:linear-gradient(135deg,var(--teal),#2bb89f); }
+  .icon.failed { background:linear-gradient(135deg,var(--coral),#c94a3a); }
+  .icon.pending { background:linear-gradient(135deg,var(--violet),#6a5acd); }
+  h1 { font-family:'Space Grotesk',sans-serif; font-size:1.4rem; margin-bottom:10px; }
+  p { color:var(--muted); font-size:0.92rem; line-height:1.6; margin-bottom:22px; }
+  .ref { font-size:0.8rem; color:var(--muted); background:rgba(255,255,255,0.05); border-radius:8px; padding:8px 12px; margin-bottom:22px; word-break:break-all; }
+  a.btn { display:inline-block; background:linear-gradient(135deg,var(--violet),#6a5acd); color:white; text-decoration:none; padding:13px 28px; border-radius:12px; font-weight:600; font-size:0.9rem; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon" id="icon">⏳</div>
+    <h1 id="title">Checking your order…</h1>
+    <p id="message">Please wait a moment.</p>
+    <div class="ref" id="ref" style="display:none"></div>
+    <a href="./" class="btn">Back to store</a>
+  </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get("status");
+  const ref = params.get("ref");
+
+  const icon = document.getElementById("icon");
+  const title = document.getElementById("title");
+  const message = document.getElementById("message");
+  const refBox = document.getElementById("ref");
+
+  if (ref) { refBox.style.display = "block"; refBox.textContent = "Order reference: " + ref; }
+
+  if (status === "success" || status === "complete") {
+    icon.className = "icon success"; icon.textContent = "✓";
+    title.textContent = "Payment received!";
+    message.textContent = "Thank you for your order. We're preparing it for shipment and you'll receive tracking details by email soon.";
+  } else if (status === "failed") {
+    icon.className = "icon failed"; icon.textContent = "✕";
+    title.textContent = "Payment didn't go through";
+    message.textContent = "Something went wrong with your payment. No charge was made — please try again or use a different payment method.";
+  } else {
+    icon.className = "icon pending"; icon.textContent = "⏳";
+    title.textContent = "Order status pending";
+    message.textContent = "We're confirming your payment status. This page will update shortly — you can also check back later.";
+  }
+</script>
+</body>
+</html>
