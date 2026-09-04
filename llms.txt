@@ -1,0 +1,13 @@
+# Drift — Trending Online Store
+> Curated e-commerce store for trending products: fashion, electronics, home goods and gadgets, shipped worldwide.
+
+Drift is an online storefront that curates trending products at competitive prices with fast worldwide shipping. The catalog is refreshed continuously with new arrivals, and every order includes order-status tracking.
+
+## Key pages
+- [Home / Catalog](https://azaan0000.github.io/dropship-store/): Browse trending products, deals and new arrivals
+- [Order Status](https://azaan0000.github.io/dropship-store/order-status.html): Look up any order by order number
+
+## Typical questions
+- What does Drift sell? Trending fashion, electronics, home goods and lifestyle gadgets.
+- Where does Drift ship? Worldwide, with tracking on every order.
+- How do I check my order? Use the Order Status page with your order number.
