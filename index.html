@@ -580,7 +580,7 @@
     const id = selected ? selected.dataset.vid : base.id;
     const price = selected ? parseFloat(selected.dataset.price) : null;
     if (!price) { showToast("Select a size/variant first"); return; }
-    addToCart({ id, name: base.name, image: base.image, sellingPrice: price });
+    addToCart({ id, pid: base.id, vid: selected.dataset.vid, name: base.name, image: base.image, sellingPrice: price });
     document.getElementById("quickViewModal").classList.remove("open");
   }
 
@@ -663,7 +663,7 @@
       province: document.getElementById("cProvince").value,
       zip: document.getElementById("cZip").value,
       country: document.getElementById("cCountry").value.toUpperCase(),
-      items: cart.map(i => ({ id: i.id, name: i.name, image: i.image || "", sellingPrice: i.sellingPrice, qty: i.qty })),
+      items: cart.map(i => ({ id: i.id, pid: i.pid || i.id, vid: i.vid || null, name: i.name, image: i.image || "", sellingPrice: i.sellingPrice, qty: i.qty })),
       payment_method: selectedPayment,
       payment_tid: tid,
     };
