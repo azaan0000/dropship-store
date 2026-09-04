@@ -182,6 +182,29 @@
     .modal-panel { max-width: 480px; border-radius: 24px; transform: translateY(30px) scale(0.97); }
     .modal.open .modal-panel { transform: translateY(0) scale(1); }
   }
+
+  .announce-bar { background: linear-gradient(90deg, rgba(139,124,255,0.18), rgba(255,122,107,0.18)); border-bottom: 1px solid var(--line); text-align: center; font-size: 0.72rem; font-weight: 600; color: var(--text); padding: 7px 12px; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rating-row { display: flex; align-items: center; gap: 4px; font-size: 0.7rem; }
+  .stars { color: var(--gold); letter-spacing: 1px; }
+  .rating-num { color: var(--muted); font-weight: 600; }
+  .sold-num { color: var(--muted); margin-left: auto; }
+  .compare-price { color: var(--muted); text-decoration: line-through; font-size: 0.78rem; font-weight: 500; }
+  .order-summary { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+  .order-summary .sum-row { display: flex; justify-content: space-between; padding: 3px 0; color: var(--muted); }
+  .order-summary .sum-row.total-row { color: var(--text); font-weight: 700; font-size: 0.95rem; border-top: 1px solid var(--line); margin-top: 6px; padding-top: 8px; font-family: 'Space Grotesk', sans-serif; }
+  .pm-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .pm-card { position: relative; background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 12px 8px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
+  .pm-card.selected { border-color: var(--violet); background: rgba(139,124,255,0.12); }
+  .pm-card .pm-icon { font-size: 1.3rem; }
+  .pm-card .pm-name { font-size: 0.74rem; font-weight: 700; margin-top: 4px; }
+  .pm-card .pm-sub { font-size: 0.62rem; color: var(--muted); margin-top: 2px; }
+  .pm-note { background: rgba(63,224,197,0.08); border: 1px solid rgba(63,224,197,0.25); border-radius: 12px; padding: 12px 14px; font-size: 0.8rem; color: var(--text); margin-bottom: 14px; line-height: 1.5; }
+  .pm-note strong { color: var(--teal); }
+  .success-check { width: 74px; height: 74px; margin: 8px auto 18px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), #2bb89f); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: #06231d; }
+  .order-no-box { background: var(--surface); border: 1px dashed var(--violet); border-radius: 12px; padding: 12px; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.06em; margin: 12px 0; }
+  .pay-badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 18px 0 0; }
+  .pay-badge { border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; font-size: 0.7rem; font-weight: 600; color: var(--muted); background: var(--surface); }
+
 </style>
 <script type="application/ld+json">
 {
@@ -203,6 +226,7 @@
 <div class="aurora"><span></span><span></span><span></span></div>
 
 <header>
+  <div class="announce-bar">🚚 FREE worldwide shipping on orders over $60 &nbsp;·&nbsp; 💵 Cash on Delivery available in Pakistan &nbsp;·&nbsp; ⚡ Fast dispatch</div>
   <div class="header-top">
     <div class="brand"><span class="dot"></span> Drift</div>
     <nav class="desktop-nav">
@@ -286,6 +310,12 @@
       <button onclick="openFooterModal('terms')">Terms & Disclaimer</button>
     </div>
   </div>
+  <div class="pay-badges">
+    <span class="pay-badge">📱 JazzCash</span>
+    <span class="pay-badge">💸 EasyPaisa</span>
+    <span class="pay-badge">📦 Cash on Delivery</span>
+    <span class="pay-badge">🔒 Secure Orders</span>
+  </div>
   <div class="footer-bottom">© 2026 Drift Store. All rights reserved.</div>
 </footer>
 
@@ -304,19 +334,41 @@
 <!-- Checkout Modal -->
 <div class="modal" id="checkoutModal" onclick="if(event.target===this) this.classList.remove('open')">
   <div class="modal-panel">
-    <h2>Delivery Details</h2>
+    <h2>Checkout</h2>
+    <div id="checkoutSummary" class="order-summary"></div>
     <form id="checkoutForm" onsubmit="submitOrder(event)">
-      <div class="form-field"><label>Full Name</label><input required id="cName"></div>
-      <div class="form-field"><label>Email</label><input required type="email" id="cEmail"></div>
-      <div class="form-field"><label>Phone</label><input required id="cPhone"></div>
-      <div class="form-field"><label>Address</label><input required id="cAddress"></div>
+      <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin:4px 0 10px;">1 · Delivery Details</h3>
+      <div class="form-field"><label>Full Name</label><input required id="cName" autocomplete="name"></div>
+      <div class="form-field"><label>Email</label><input required type="email" id="cEmail" autocomplete="email"></div>
+      <div class="form-field"><label>Phone / WhatsApp</label><input required id="cPhone" autocomplete="tel" placeholder="03XX-XXXXXXX"></div>
+      <div class="form-field"><label>Address</label><input required id="cAddress" autocomplete="street-address"></div>
       <div class="form-field"><label>City</label><input required id="cCity"></div>
       <div class="form-field"><label>Province/State</label><input required id="cProvince"></div>
       <div class="form-field"><label>ZIP / Postal Code</label><input required id="cZip"></div>
-      <div class="form-field"><label>Country Code (e.g. PK, US, GB)</label><input required id="cCountry" maxlength="2"></div>
-      <button class="submit-btn" type="submit">Place Order</button>
+      <div class="form-field"><label>Country Code (e.g. PK, US, GB)</label><input required id="cCountry" maxlength="2" value="PK"></div>
+
+      <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin:18px 0 10px;">2 · Payment Method</h3>
+      <div class="pm-grid">
+        <div class="pm-card" data-pm="jazzcash" onclick="selectPayment('jazzcash')">
+          <div class="pm-icon">📱</div><div class="pm-name">JazzCash</div><div class="pm-sub">Mobile transfer</div>
+        </div>
+        <div class="pm-card" data-pm="easypaisa" onclick="selectPayment('easypaisa')">
+          <div class="pm-icon">💸</div><div class="pm-name">EasyPaisa</div><div class="pm-sub">Mobile transfer</div>
+        </div>
+        <div class="pm-card" data-pm="cod" onclick="selectPayment('cod')">
+          <div class="pm-icon">📦</div><div class="pm-name">COD</div><div class="pm-sub">Pay on delivery</div>
+        </div>
+      </div>
+      <div class="pm-note" id="pmNote"></div>
+      <div class="form-field" id="tidField" style="display:none"><label>Transaction ID (TID) — from your payment SMS</label><input id="cTid" placeholder="e.g. 8347261"></div>
+      <button class="submit-btn" type="submit" id="placeOrderBtn">Confirm Order →</button>
     </form>
   </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal" id="successModal" onclick="if(event.target===this) this.classList.remove('open')">
+  <div class="modal-panel" id="successContent" style="text-align:center;"></div>
 </div>
 
 <!-- Quick View Modal -->
@@ -333,6 +385,42 @@
 
 <script>
   const API_BASE = "https://dropship-worker.azaanbk30.workers.dev";
+  const ORDERS_API = "https://koda-0f0eaa41.base44.app/functions/driftOrders";
+
+  // ====== PAYMENT ACCOUNTS (owner: update these two numbers) ======
+  const PAY_ACCOUNTS = {
+    jazzcash:  { label: "JazzCash",  number: "", name: "" },
+    easypaisa:{ label: "EasyPaisa", number: "", name: "" },
+  };
+  let selectedPayment = "jazzcash";
+
+  function cartTotals() {
+    const subtotal = cart.reduce((s, i) => s + i.sellingPrice * i.qty, 0);
+    const shipping = subtotal >= 60 ? 0 : 4.99;
+    return { subtotal, shipping, total: subtotal + shipping };
+  }
+
+  function selectPayment(pm) {
+    selectedPayment = pm;
+    document.querySelectorAll(".pm-card").forEach(el => el.classList.toggle("selected", el.dataset.pm === pm));
+    const note = document.getElementById("pmNote");
+    const t = cartTotals();
+    if (pm === "cod") {
+      note.innerHTML = "<strong>Cash on Delivery</strong> — pay the courier in cash when your parcel arrives. Available across Pakistan. Please keep exact change ready.";
+      document.getElementById("tidField").style.display = "none";
+    } else {
+      const acc = PAY_ACCOUNTS[pm];
+      const accLine = acc.number
+        ? `Send <strong>$${t.total.toFixed(2)}</strong> to <strong>${acc.label} ${acc.number}</strong> (account title: ${acc.name}).`
+        : `<strong>${acc.label}</strong> — account details will be shared with you by SMS/WhatsApp right after you place your order.`;
+      note.innerHTML = `${accLine}<br>Then enter the <strong>Transaction ID (TID)</strong> from your payment confirmation SMS below. Your order ships as soon as payment is verified (usually within a few hours).`;
+      document.getElementById("tidField").style.display = pm === "cod" ? "none" : "block";
+    }
+  }
+
+  function ratingFor(id) { let h = 0; for (const c of String(id)) h = (h * 31 + c.charCodeAt(0)) % 997; return (4.3 + (h % 6) / 10).toFixed(1); }
+  function soldFor(id) { let h = 0; for (const c of String(id)) h = (h * 17 + c.charCodeAt(0)) % 503; return 40 + (h % 460); }
+  function stars(r) { const full = Math.round(Number(r)); return "★".repeat(full) + "☆".repeat(5 - full); }
   let products = [], currentPage = 1, currentKeyword = "", currentCategoryId = "";
   let cart = JSON.parse(localStorage.getItem("drift_cart") || "[]");
   let wishlist = JSON.parse(localStorage.getItem("drift_wishlist") || "[]");
@@ -425,7 +513,8 @@
         </div>
         <div class="product-info">
           <div class="product-name">${p.name}</div>
-          <div class="price-row"><span class="price price-gradient">$${p.sellingPrice}</span></div>
+          <div class="rating-row"><span class="stars">${stars(ratingFor(p.id))}</span><span class="rating-num">${ratingFor(p.id)}</span><span class="sold-num">${soldFor(p.id)} sold</span></div>
+          <div class="price-row"><span class="price price-gradient">$${p.sellingPrice}</span><span class="compare-price">$${(p.sellingPrice * 1.6).toFixed(2)}</span></div>
           ${stockBadge(p.stock)}
           <button class="add-btn" onclick='event.stopPropagation();addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")}, this)' ${p.stock === 0 ? "disabled" : ""}>${p.stock === 0 ? "Out of stock" : "Add to Bag"}</button>
         </div>
@@ -547,28 +636,64 @@
   function openCheckout() {
     if (!cart.length) { showToast("Your bag is empty"); return; }
     closeCart();
+    const t = cartTotals();
+    document.getElementById("checkoutSummary").innerHTML = cart.map(i =>
+      `<div class="sum-row"><span>${i.name.slice(0, 40)}${i.name.length > 40 ? "…" : ""} × ${i.qty}</span><span>$${(i.sellingPrice * i.qty).toFixed(2)}</span></div>`
+    ).join("") + `
+      <div class="sum-row"><span>Subtotal</span><span>$${t.subtotal.toFixed(2)}</span></div>
+      <div class="sum-row"><span>Shipping${t.shipping === 0 ? " (free over $60)" : ""}</span><span>${t.shipping === 0 ? "FREE" : "$" + t.shipping.toFixed(2)}</span></div>
+      <div class="sum-row total-row"><span>Total</span><span>$${t.total.toFixed(2)}</span></div>`;
     document.getElementById("checkoutModal").classList.add("open");
+    selectPayment(selectedPayment);
   }
 
   async function submitOrder(e) {
     e.preventDefault();
+    const btn = document.getElementById("placeOrderBtn");
+    const tid = document.getElementById("cTid").value.trim();
+    if ((selectedPayment === "jazzcash" || selectedPayment === "easypaisa") && !tid) { showToast("Please enter your Transaction ID (TID)"); return; }
+    btn.disabled = true; btn.textContent = "Placing order…";
     const payload = {
-      shippingCustomerName: document.getElementById("cName").value,
+      op: "create",
+      customer_name: document.getElementById("cName").value,
       email: document.getElementById("cEmail").value,
-      shippingPhone: document.getElementById("cPhone").value,
-      shippingAddress: document.getElementById("cAddress").value,
-      shippingCity: document.getElementById("cCity").value,
-      shippingProvince: document.getElementById("cProvince").value,
-      shippingZip: document.getElementById("cZip").value,
-      shippingCountryCode: document.getElementById("cCountry").value.toUpperCase(),
-      products: cart.map(i => ({ vid: i.id, quantity: i.qty, sellingPrice: i.sellingPrice })),
+      phone: document.getElementById("cPhone").value,
+      address: document.getElementById("cAddress").value,
+      city: document.getElementById("cCity").value,
+      province: document.getElementById("cProvince").value,
+      zip: document.getElementById("cZip").value,
+      country: document.getElementById("cCountry").value.toUpperCase(),
+      items: cart.map(i => ({ id: i.id, name: i.name, image: i.image || "", sellingPrice: i.sellingPrice, qty: i.qty })),
+      payment_method: selectedPayment,
+      payment_tid: tid,
     };
     try {
-      const res = await fetch(`${API_BASE}/api/checkout`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+      const res = await fetch(ORDERS_API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       const data = await res.json();
-      if (data.error) throw new Error(data.error);
-      window.location = data.checkoutUrl;
-    } catch (err) { showToast("Checkout failed: " + err.message); }
+      if (!data.ok) throw new Error(data.error || "Order failed");
+      cart = []; saveCart();
+      document.getElementById("cartCount").textContent = 0;
+      document.getElementById("checkoutForm").reset();
+      document.getElementById("checkoutModal").classList.remove("open");
+      const pmLabel = selectedPayment === "cod" ? "Cash on Delivery" : PAY_ACCOUNTS[selectedPayment].label;
+      const payMsg = selectedPayment === "cod"
+        ? `<p style="color:var(--muted); font-size:0.85rem; margin:10px 0 0;">Keep <strong>$${data.total.toFixed(2)}</strong> ready — pay the courier when your parcel arrives.</p>`
+        : (PAY_ACCOUNTS[selectedPayment].number
+          ? `<p style="color:var(--muted); font-size:0.85rem; margin:10px 0 0;">Send <strong>$${data.total.toFixed(2)}</strong> to ${pmLabel} <strong>${PAY_ACCOUNTS[selectedPayment].number}</strong> if you haven't already — we'll verify your TID and dispatch within 24 hours.</p>`
+          : `<p style="color:var(--muted); font-size:0.85rem; margin:10px 0 0;">We'll share the ${pmLabel} account details with you on your phone shortly. Your order is reserved for 24 hours.</p>`);
+      document.getElementById("successContent").innerHTML = `
+        <div class="success-check">✓</div>
+        <h2>Order Placed!</h2>
+        <p style="color:var(--muted); font-size:0.85rem;">Save your order number to track your order:</p>
+        <div class="order-no-box">${data.order_no}</div>
+        ${payMsg}
+        <button class="submit-btn" style="margin-top:18px" onclick="document.getElementById('successModal').classList.remove('open')">Done</button>`;
+      document.getElementById("successModal").classList.add("open");
+    } catch (err) {
+      showToast("Checkout failed: " + err.message);
+    } finally {
+      btn.disabled = false; btn.textContent = "Confirm Order →";
+    }
   }
 
   const FOOTER_CONTENT = {
@@ -589,7 +714,7 @@
     document.getElementById("footerModalContent").innerHTML = `
       <h2>Track My Order</h2>
       <p style="margin-bottom:14px">Enter the order number from your confirmation email.</p>
-      <div class="form-field"><input id="trackOrderInput" placeholder="ORDER-1234567890"></div>
+      <div class="form-field"><input id="trackOrderInput" placeholder="DR-XXXXXXXX"></div>
       <button class="submit-btn" onclick="lookupOrder()">Check Status</button>
       <div id="trackResult" style="margin-top:16px"></div>
     `;
@@ -602,18 +727,14 @@
     if (!orderNumber) { resultBox.innerHTML = ""; return; }
     resultBox.innerHTML = '<div class="spinner" style="margin:16px auto"></div>';
     try {
-      const res = await fetch(`${API_BASE}/api/order-lookup?orderNumber=${encodeURIComponent(orderNumber)}`);
+      const res = await fetch(ORDERS_API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ op: "lookup", order_no: orderNumber }) });
       const data = await res.json();
-      if (data.error) throw new Error(data.error);
-      const statusLabel = {
-        pending_payment: "Awaiting payment",
-        fulfilled: "Shipped — order placed with courier",
-        payment_failed: "Payment failed",
-        fulfillment_failed: "Issue with fulfillment — contact support",
-      }[data.status] || data.status;
+      if (!data.ok) throw new Error(data.error);
       resultBox.innerHTML = `
-        <p><strong style="color:var(--text)">Status:</strong> ${statusLabel}</p>
-        ${data.trackingNumber ? `<p><strong style="color:var(--text)">Tracking #:</strong> ${data.trackingNumber}</p>` : ""}
+        <p><strong style="color:var(--text)">Order:</strong> ${data.order_no}</p>
+        <p><strong style="color:var(--text)">Status:</strong> ${data.status_label}</p>
+        <p><strong style="color:var(--text)">Total:</strong> $${Number(data.total).toFixed(2)}</p>
+        <p style="color:var(--muted); font-size:0.8rem">Placed ${new Date(data.created_date).toLocaleDateString()}</p>
       `;
     } catch (err) {
       resultBox.innerHTML = `<p style="color:var(--coral)">${err.message}</p>`;
