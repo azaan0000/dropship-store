@@ -3,57 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Status — Drift</title>
+<title>Track Order — Drift</title>
+<meta name="description" content="Track your Drift order status. Enter your order number to see payment, shipping and delivery updates.">
+<link rel="canonical" href="https://azaan0000.github.io/dropship-store/order-status.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root { --paper:#0d0c14; --surface:#1a1826; --line:rgba(255,255,255,.1); --text:#f2f0f8; --muted:#9a95ad; --violet:#8b7cff; --coral:#ff7a6b; --teal:#3fe0c5; }
   * { box-sizing:border-box; margin:0; padding:0; }
   body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--text); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
-  .card { max-width:420px; width:100%; background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:36px 28px; text-align:center; }
+  .card { max-width:440px; width:100%; background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:36px 28px; text-align:center; }
+  h1 { font-family:'Space Grotesk',sans-serif; font-size:1.4rem; margin-bottom:10px; }
+  p { color:var(--muted); font-size:0.9rem; line-height:1.6; margin-bottom:18px; }
+  input { width:100%; padding:13px 16px; background:rgba(255,255,255,0.05); border:1px solid var(--line); border-radius:12px; color:var(--text); font-size:0.95rem; font-family:inherit; outline:none; text-align:center; letter-spacing:0.05em; text-transform:uppercase; }
+  input:focus { border-color:var(--violet); }
+  button { margin-top:12px; width:100%; background:linear-gradient(135deg,var(--violet),#6a5acd); color:white; border:none; border-radius:12px; padding:13px; font-weight:700; font-size:0.95rem; font-family:inherit; cursor:pointer; }
   .icon { width:64px; height:64px; margin:0 auto 20px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; }
   .icon.success { background:linear-gradient(135deg,var(--teal),#2bb89f); }
   .icon.failed { background:linear-gradient(135deg,var(--coral),#c94a3a); }
   .icon.pending { background:linear-gradient(135deg,var(--violet),#6a5acd); }
-  h1 { font-family:'Space Grotesk',sans-serif; font-size:1.4rem; margin-bottom:10px; }
-  p { color:var(--muted); font-size:0.92rem; line-height:1.6; margin-bottom:22px; }
-  .ref { font-size:0.8rem; color:var(--muted); background:rgba(255,255,255,0.05); border-radius:8px; padding:8px 12px; margin-bottom:22px; word-break:break-all; }
-  a.btn { display:inline-block; background:linear-gradient(135deg,var(--violet),#6a5acd); color:white; text-decoration:none; padding:13px 28px; border-radius:12px; font-weight:600; font-size:0.9rem; }
+  .status-box { margin-top:18px; text-align:left; background:rgba(255,255,255,0.05); border:1px solid var(--line); border-radius:14px; padding:16px 18px; font-size:0.88rem; line-height:1.7; display:none; }
+  .status-box strong { color:var(--text); }
+  .status-box .row { color:var(--muted); }
+  a.back { display:inline-block; margin-top:20px; color:var(--muted); font-size:0.82rem; text-decoration:none; }
+  a.back:hover { color:var(--text); }
+  .spinner { width:26px; height:26px; margin:10px auto; border:3px solid var(--line); border-top-color:var(--violet); border-radius:50%; animation:spin .8s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
 </style>
 </head>
 <body>
   <div class="card">
-    <div class="icon" id="icon">⏳</div>
-    <h1 id="title">Checking your order…</h1>
-    <p id="message">Please wait a moment.</p>
-    <div class="ref" id="ref" style="display:none"></div>
-    <a href="./" class="btn">Back to store</a>
+    <h1>Track your order</h1>
+    <p>Enter the order number from your confirmation screen (e.g. DR-XXXXXXXX).</p>
+    <input id="orderNo" placeholder="DR-XXXXXXXX" onkeydown="if(event.key==='Enter')trackOrder()">
+    <button onclick="trackOrder()">Check Status</button>
+    <div id="loader" style="display:none"><div class="spinner"></div></div>
+    <div class="status-box" id="statusBox"></div>
+    <div id="statusIcon"></div>
+    <a href="./" class="back">← Back to store</a>
   </div>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const status = params.get("status");
-  const ref = params.get("ref");
-
-  const icon = document.getElementById("icon");
-  const title = document.getElementById("title");
-  const message = document.getElementById("message");
-  const refBox = document.getElementById("ref");
-
-  if (ref) { refBox.style.display = "block"; refBox.textContent = "Order reference: " + ref; }
-
-  if (status === "success" || status === "complete") {
-    icon.className = "icon success"; icon.textContent = "✓";
-    title.textContent = "Payment received!";
-    message.textContent = "Thank you for your order. We're preparing it for shipment and you'll receive tracking details by email soon.";
-  } else if (status === "failed") {
-    icon.className = "icon failed"; icon.textContent = "✕";
-    title.textContent = "Payment didn't go through";
-    message.textContent = "Something went wrong with your payment. No charge was made — please try again or use a different payment method.";
-  } else {
-    icon.className = "icon pending"; icon.textContent = "⏳";
-    title.textContent = "Order status pending";
-    message.textContent = "We're confirming your payment status. This page will update shortly — you can also check back later.";
+  const ORDERS_API = "https://koda-0f0eaa41.base44.app/functions/driftOrders";
+  const STATUS_STEPS = {
+    awaiting_payment: ["Order received", "Awaiting payment confirmation", "Dispatch", "Delivery"],
+    cod_pending: ["Order confirmed", "Preparing your parcel", "Dispatch", "Pay on delivery"],
+    processing: ["Payment received", "Preparing your parcel", "Dispatch", "Delivery"],
+    shipped: ["Payment received", "Prepared", "Shipped ✓", "Delivery"],
+    delivered: ["Payment received", "Prepared", "Shipped", "Delivered ✓"],
+    cancelled: ["Order cancelled"],
+  };
+  async function trackOrder() {
+    const orderNo = document.getElementById("orderNo").value.trim().toUpperCase();
+    const box = document.getElementById("statusBox");
+    const icon = document.getElementById("statusIcon");
+    const loader = document.getElementById("loader");
+    if (!orderNo) return;
+    loader.style.display = "block"; box.style.display = "none"; icon.innerHTML = "";
+    try {
+      const res = await fetch(ORDERS_API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ op: "lookup", order_no: orderNo }) });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error);
+      loader.style.display = "none";
+      const steps = STATUS_STEPS[data.status] || [data.status_label];
+      box.innerHTML = `<div class="row" style="text-align:center; margin-bottom:10px"><strong style="font-size:1.05rem">${data.order_no}</strong></div>` +
+        steps.map((s, i) => `<div class="row">Step ${i + 1} · ${s}</div>`).join("") +
+        `<div class="row" style="margin-top:8px; border-top:1px solid var(--line); padding-top:8px"><strong>Total:</strong> $${Number(data.total).toFixed(2)} · ${data.payment_method === "cod" ? "Cash on Delivery" : data.payment_method === "jazzcash" ? "JazzCash" : "EasyPaisa"}</div>`;
+      box.style.display = "block";
+      icon.innerHTML = `<div class="icon ${data.status === "delivered" ? "success" : data.status === "cancelled" ? "failed" : "pending"}">${data.status === "delivered" ? "✓" : data.status === "cancelled" ? "✕" : "🚚"}</div>`;
+    } catch (err) {
+      loader.style.display = "none";
+      box.innerHTML = `<div class="row" style="text-align:center; color:var(--coral)">${err.message}</div>`;
+      box.style.display = "block";
+    }
   }
 </script>
 </body>
