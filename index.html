@@ -311,7 +311,7 @@
     </div>
   </div>
   <div class="pay-badges">
-    <span class="pay-badge">📱 JazzCash</span>
+    <span class="pay-badge">💳 SadaPay</span>
     <span class="pay-badge">💸 EasyPaisa</span>
     <span class="pay-badge">📦 Cash on Delivery</span>
     <span class="pay-badge">🔒 Secure Orders</span>
@@ -349,11 +349,11 @@
 
       <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin:18px 0 10px;">2 · Payment Method</h3>
       <div class="pm-grid">
-        <div class="pm-card" data-pm="jazzcash" onclick="selectPayment('jazzcash')">
-          <div class="pm-icon">📱</div><div class="pm-name">JazzCash</div><div class="pm-sub">Mobile transfer</div>
-        </div>
         <div class="pm-card" data-pm="easypaisa" onclick="selectPayment('easypaisa')">
           <div class="pm-icon">💸</div><div class="pm-name">EasyPaisa</div><div class="pm-sub">Mobile transfer</div>
+        </div>
+        <div class="pm-card" data-pm="sadapay" onclick="selectPayment('sadapay')">
+          <div class="pm-icon">💳</div><div class="pm-name">SadaPay</div><div class="pm-sub">IBFT / app transfer</div>
         </div>
         <div class="pm-card" data-pm="cod" onclick="selectPayment('cod')">
           <div class="pm-icon">📦</div><div class="pm-name">COD</div><div class="pm-sub">Pay on delivery</div>
@@ -387,12 +387,12 @@
   const API_BASE = "https://dropship-worker.azaanbk30.workers.dev";
   const ORDERS_API = "https://koda-0f0eaa41.base44.app/functions/driftOrders";
 
-  // ====== PAYMENT ACCOUNTS (owner: update these two numbers) ======
+  // ====== PAYMENT ACCOUNTS ======
   const PAY_ACCOUNTS = {
-    jazzcash:  { label: "JazzCash",  number: "", name: "" },
-    easypaisa:{ label: "EasyPaisa", number: "", name: "" },
+    easypaisa: { label: "EasyPaisa", number: "03183519733", name: "Azaan Zahoor" },
+    sadapay:   { label: "SadaPay",   number: "03705840165", name: "Azaan Zahoor" },
   };
-  let selectedPayment = "jazzcash";
+  let selectedPayment = "easypaisa";
 
   function cartTotals() {
     const subtotal = cart.reduce((s, i) => s + i.sellingPrice * i.qty, 0);
@@ -494,8 +494,7 @@
   }
 
   function stockBadge(stock) {
-    if (stock === undefined || stock === null) return "";
-    if (stock <= 0) return `<span class="stock-badge out">Out of stock</span>`;
+    if (stock === undefined || stock === null || stock <= 0) return ""; // CJ list API reports 0 for available items — treat as available
     if (stock <= 10) return `<span class="stock-badge low">Only ${stock} left</span>`;
     return `<span class="stock-badge in">In stock</span>`;
   }
@@ -516,7 +515,7 @@
           <div class="rating-row"><span class="stars">${stars(ratingFor(p.id))}</span><span class="rating-num">${ratingFor(p.id)}</span><span class="sold-num">${soldFor(p.id)} sold</span></div>
           <div class="price-row"><span class="price price-gradient">$${p.sellingPrice}</span><span class="compare-price">$${(p.sellingPrice * 1.6).toFixed(2)}</span></div>
           ${stockBadge(p.stock)}
-          <button class="add-btn" onclick='event.stopPropagation();addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")}, this)' ${p.stock === 0 ? "disabled" : ""}>${p.stock === 0 ? "Out of stock" : "Add to Bag"}</button>
+          <button class="add-btn" onclick='event.stopPropagation();addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")}, this)'>Add to Bag</button>
         </div>
       </div>
     `).join("");
@@ -549,7 +548,8 @@
       qvImages = (p.images && p.images.length ? p.images : [p.image]).slice(0, 6);
       qvIndex = 0;
       const variants = p.variants || [];
-      const totalStock = variants.reduce((s, v) => s + (v.stock || 0), 0);
+      const numericStocks = variants.map(v => v.stock).filter(s => typeof s === "number");
+      const totalStock = numericStocks.length ? numericStocks.reduce((s, v) => s + v, 0) : undefined;
       content.innerHTML = `
         <div class="quickview-img"><img id="qvMainImg" src="${qvImages[0]}" alt="${p.name}"></div>
         ${qvImages.length > 1 ? `<div class="qv-thumbs">${qvImages.map((img,i)=>`<button class="qv-thumb ${i===0?'active':''}" onclick="setQvImage(${i}, this)"><img src="${img}"></button>`).join("")}</div>` : ""}
