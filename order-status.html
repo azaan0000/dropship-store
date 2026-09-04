@@ -68,7 +68,7 @@
       const steps = STATUS_STEPS[data.status] || [data.status_label];
       box.innerHTML = `<div class="row" style="text-align:center; margin-bottom:10px"><strong style="font-size:1.05rem">${data.order_no}</strong></div>` +
         steps.map((s, i) => `<div class="row">Step ${i + 1} · ${s}</div>`).join("") +
-        `<div class="row" style="margin-top:8px; border-top:1px solid var(--line); padding-top:8px"><strong>Total:</strong> $${Number(data.total).toFixed(2)} · ${data.payment_method === "cod" ? "Cash on Delivery" : data.payment_method === "jazzcash" ? "JazzCash" : "EasyPaisa"}</div>`;
+        `<div class="row" style="margin-top:8px; border-top:1px solid var(--line); padding-top:8px"><strong>Total:</strong> $${Number(data.total).toFixed(2)} · ${data.payment_method === "cod" ? "Cash on Delivery" : data.payment_method === "sadapay" ? "SadaPay" : "EasyPaisa"}</div>`;
       box.style.display = "block";
       icon.innerHTML = `<div class="icon ${data.status === "delivered" ? "success" : data.status === "cancelled" ? "failed" : "pending"}">${data.status === "delivered" ? "✓" : data.status === "cancelled" ? "✕" : "🚚"}</div>`;
     } catch (err) {
