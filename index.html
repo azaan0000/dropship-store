@@ -500,6 +500,7 @@
         </div>
       </div>
       <p style="margin:10px 0 0;font-size:0.72rem;color:var(--muted);">⏱️ Estimated delivery: 15–30 days (dispatched from our international warehouse). A tracking number will be shared once shipped.</p>
+      <p style="margin:6px 0 0;font-size:0.72rem;color:var(--muted);">🌍 Ordering from outside Pakistan? EasyPaisa/SadaPay are Pakistan-only — place your order and our team will email you payment options for your country.</p>
       <div class="pm-note" id="pmNote"></div>
       <div class="form-field" id="tidField" style="display:none"><label>Transaction ID (TID) — from your payment SMS</label><input id="cTid" placeholder="e.g. 8347261"></div>
       <button class="submit-btn" type="submit" id="placeOrderBtn">Confirm Order →</button>
@@ -541,8 +542,7 @@
     return { subtotal, shipping, total: subtotal + shipping };
   }
 
-  const USD_TO_PKR = 288;
-  function pkr(usd) { return "Rs. " + (Math.round(usd * USD_TO_PKR / 10) * 10).toLocaleString("en-PK"); }
+  const USD_TO_PKR = 288; // internal estimate only (owner alerts) — never shown to customers
   function selectPayment(pm) {
     selectedPayment = pm;
     document.querySelectorAll(".pm-card").forEach(el => el.classList.toggle("selected", el.dataset.pm === pm));
@@ -550,7 +550,7 @@
     const t = cartTotals();
     const acc = PAY_ACCOUNTS[pm];
     const accLine = acc.number
-      ? `Send <strong>${pkr(t.total)}</strong> (= $${t.total.toFixed(2)} × Rs. ${USD_TO_PKR}) to <strong>${acc.label} ${acc.number}</strong> (account title: ${acc.name}).`
+      ? `Send <strong>$${t.total.toFixed(2)}</strong> to <strong>${acc.label} ${acc.number}</strong> (account title: ${acc.name}).`
       : `<strong>${acc.label}</strong> — account details will be shared with you by SMS/WhatsApp right after you place your order.`;
     note.innerHTML = `${accLine}<br>Then enter the <strong>Transaction ID (TID)</strong> from your payment confirmation SMS below. Your order ships as soon as payment is verified (usually within a few hours).`;
     document.getElementById("tidField").style.display = "block";
@@ -814,7 +814,7 @@
       document.getElementById("checkoutModal").classList.remove("open");
       const pmLabel = PAY_ACCOUNTS[selectedPayment].label;
       const payMsg = PAY_ACCOUNTS[selectedPayment].number
-        ? `<p style="color:var(--muted); font-size:0.85rem; margin:10px 0 0;">Send <strong>${pkr(data.total)}</strong> (= $${data.total.toFixed(2)}) to ${pmLabel} <strong>${PAY_ACCOUNTS[selectedPayment].number}</strong> (title: ${PAY_ACCOUNTS[selectedPayment].name}) if you haven't already — we'll verify your TID and dispatch within 24 hours.</p>`
+        ? `<p style="color:var(--muted); font-size:0.85rem; margin:10px 0 0;">Send <strong>$${data.total.toFixed(2)}</strong> to ${pmLabel} <strong>${PAY_ACCOUNTS[selectedPayment].number}</strong> if you haven't already — we'll verify your TID and dispatch within 24 hours.</p>`
         : `<p style="color:var(--muted); font-size:0.85rem; margin:10px 0 0;">We'll share the ${pmLabel} account details with you on your phone shortly. Your order is reserved for 24 hours.</p>`;
       document.getElementById("successContent").innerHTML = `
         <div class="success-check">✓</div>
