@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/2009/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://azaan0000.github.io/dropship-store/</loc>
     <changefreq>daily</changefreq>
@@ -9,5 +9,10 @@
     <loc>https://azaan0000.github.io/dropship-store/order-status.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://azaan0000.github.io/dropship-store/blog/winter-dresses-online-pakistan.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
