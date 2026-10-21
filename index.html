@@ -436,6 +436,23 @@
       <button onclick="document.getElementById('searchInput').focus()">Search</button>
     </div>
     <div class="footer-col">
+
+    <div class="footer-col">
+      <h4>Popular Finds</h4>
+      <a href="p/autumnwinter-corduroy-plus-size-womens-casual-trousers.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">AutumnWinter Corduroy Plus-size Womens Cas</a>
+      <a href="p/new-fallwinter-womens-hooded-solid-color-long-sleeve-loose-fit-button.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">New Fallwinter Womens Hooded Solid-color L</a>
+      <a href="p/womens-autumn-round-neck-lantern-sleeve-top-with-irregular-wavy-hem.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">Women&#x27;s Autumn Round-Neck Lantern-Sleeve T</a>
+      <a href="p/european-and-american-style-slim-fit-stretch-knit-sweater-for-men-soli.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">European And American-style Slim-fit Stret</a>
+      <a href="p/mens-leather-jacket-double-breasted-extended-length-with-a-belt-for-a.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">Men&#x27;s Leather Jacket Double-breasted Exten</a>
+      <a href="p/womens-autumn-and-winter-leisure-button-sweater-sweater.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">Women&#x27;s Autumn And Winter Leisure Button S</a>
+    </div>
+    <div class="footer-col">
+      <h4>Collections</h4>
+      <a href="c/womens-winter-fashion.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">Women&#x27;s Winter Fashion</a>
+      <a href="c/mens-fashion.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">Men&#x27;s Fashion</a>
+      <a href="c/gadgets-accessories.html" style="display:block;background:none;border:none;color:var(--text);font-size:0.86rem;padding:6px 0;text-align:left;opacity:0.85;text-decoration:none;">Gadgets &amp; Accessories</a>
+    </div>
+    <div class="footer-col">
       <h4>Company</h4>
       <button onclick="openFooterModal('about')">About Us</button>
       <button onclick="openFooterModal('contact')">Contact</button>
@@ -610,7 +627,28 @@
     currentPage = 1;
     currentKeyword = document.getElementById("searchInput").value.trim();
     products = [];
-    loadProducts(false);
+    loadProducts(false).then(handleBuyParam);
+  }
+
+
+  async function handleBuyParam() {
+    const id = new URLSearchParams(location.search).get("buy");
+    if (!id) return;
+    let p = products.find(x => String(x.id) === String(id));
+    let page = 1;
+    while (!p && page < 8) {
+      try {
+        const res = await fetch(`${API_BASE}/api/products?page=${page}`);
+        const data = await res.json();
+        const list = data.products || [];
+        p = list.find(x => String(x.id) === String(id));
+        if (!p && list.length === 0) break;
+        page += 1;
+      } catch (e) { break; }
+    }
+    if (!p) { showToast("Item not found — browse the latest finds"); return; }
+    addToCart(p);
+    openCheckout();
   }
 
   async function loadProducts(append) {
