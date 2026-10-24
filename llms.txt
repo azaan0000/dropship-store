@@ -65,3 +65,8 @@ Drift is an online storefront that curates trending products at competitive pric
 - [Hoodie](https://azaan0000.github.io/dropship-store/p/hoodie.html): $32.99
 - [Retro Casual Stand-collar Zip-front Jacket Suede-velvet Jacket](https://azaan0000.github.io/dropship-store/p/retro-casual-stand-collar-zip-front-jacket-suede-velvet-jacket.html): $13.99
 - [Casual Cargo Pants With A Drawstring Waist](https://azaan0000.github.io/dropship-store/p/casual-cargo-pants-with-a-drawstring-waist.html): $18.99
+## Blog & Guides (2026-10)
+- [Drift Blog Index](https://azaan0000.github.io/dropship-store/blog/index.html): All blog posts and buying guides
+- [Winter Jackets Online Pakistan 2026](https://azaan0000.github.io/dropship-store/blog/winter-jackets-online-pakistan.html): Heated jackets, faux fur coats, suede and leather jackets winter guide
+- [Gift Ideas Under 1000 Rupees Pakistan](https://azaan0000.github.io/dropship-store/guides/gift-ideas-under-1000-rupees.html): Budget gift buying guide - earrings, rings, toys, keepsakes from $4.99
+- [Winter Dresses Online Pakistan](https://azaan0000.github.io/dropship-store/blog/winter-dresses-online-pakistan.html): Winter dresses and styling guide
