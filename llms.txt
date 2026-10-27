@@ -86,3 +86,9 @@ Drift is an online storefront that curates trending products at competitive pric
 - [All-match Small Padded Cotton-padded Jacket Outerwear Trendy](https://azaan0000.github.io/dropship-store/p/all-match-small-padded-cotton-padded-jacket-outerwear-trendy.html): $10.99
 - [New Japanese-style Retro Newsboy Cap For Women Autumn Season](https://azaan0000.github.io/dropship-store/p/new-japanese-style-retro-newsboy-cap-for-women-autumn-season.html): $9.99
 - [Women's Mercerized Cotton Patchwork T-shirt](https://azaan0000.github.io/dropship-store/p/womens-mercerized-cotton-patchwork-t-shirt.html): $11.99
+
+## Key pages
+- [All products index](https://azaan0000.github.io/dropship-store/all-products.html): 55 product pages listed
+- [About Drift Store](https://azaan0000.github.io/dropship-store/about.html): who we are, payments, delivery
+- [Contact](https://azaan0000.github.io/dropship-store/contact.html): support email and order help
+- [Order status](https://azaan0000.github.io/dropship-store/order-status.html): track a Drift order
